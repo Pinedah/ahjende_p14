@@ -1,0 +1,27 @@
+📌 *p14 - Histórico de Ejecutivo*  
+Igual que se ha efectuado el histórico de cita, se debe llevar un registro puntual de los movimientos y cambios realizados a través de la tabla *historial_ejecutivo* 📋, con los mismos campos de historial_cita:
+
+- id_his_eje → id  
+- fec_his_eje → fecha y hora del registro 🕒  
+- res_his_eje → responsable (nom_eje) 👤  
+- mov_his_eje → Tipo de movimiento ("alta", "cambio", "baja") 🔄  
+- des_his_eje → descripción, ejemplo:  
+  "El usuario Francisco Pineda hizo un cambio en nom_eje de 'Juan Pérez' por 'Juan Pérez Martínez'"  
+- id_eje11 → FK asociado a ejecutivo 🔗
+
+Esta tabla preservará todos los movimientos asociados al ejecutivo, desde su alta, baja o cualquier cambio efectuado, señalando *cuándo, dónde, quién y qué pasó*.
+
+---
+
+📌 *p15 - Semáforo de Sesión*  
+Se debe ingresar un campo en ejecutivo llamado *ult_eje DATETIME* que refiere a la última fecha y hora que registró una sesión el ejecutivo, básicamente cuándo inició sesión por última vez 🔐.
+
+*Lógica del semáforo:*
+- 🟢 *Verde* = ≤ 1 día  
+- 🟡 *Amarillo* = 2 ≤ días ≤ 3  
+- 🔴 *Rojo* = ≥ 4 días  
+
+Reflejando con un indicador visual de estado mediante código de colores en la interfaz.
+
+*NOTA:*  
+Por ahora dado que no existe el login, randomizar valores (ult_eje) con fechas ≤ 5 días desde hoy para simular la funcionalidad 🎲.
