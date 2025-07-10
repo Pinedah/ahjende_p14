@@ -26,8 +26,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		break;
 
 		case 'obtener_ejecutivos_jerarquia':
-			// Obtener todos los ejecutivos con sus relaciones jerárquicas
-			$query = "SELECT e.id_eje, e.nom_eje, e.tel_eje, e.eli_eje, e.id_padre, e.id_pla, p.nom_pla 
+			// Obtener todos los ejecutivos con sus relaciones jerárquicas y semáforo de sesión
+			$query = "SELECT e.id_eje, e.nom_eje, e.tel_eje, e.eli_eje, e.id_padre, e.id_pla, e.ult_eje, 
+					         p.nom_pla,
+					         CASE 
+					             WHEN e.ult_eje IS NULL THEN 'sin_sesion'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) <= 1 THEN 'verde'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) BETWEEN 2 AND 3 THEN 'amarillo'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) >= 4 THEN 'rojo'
+					             ELSE 'sin_sesion'
+					         END as semaforo_sesion,
+					         TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) as dias_desde_ultima_sesion
 					  FROM ejecutivo e 
 					  LEFT JOIN plantel p ON e.id_pla = p.id_pla 
 					  ORDER BY e.eli_eje DESC, e.nom_eje ASC";
@@ -428,11 +437,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		break;
 
 		case 'obtener_ejecutivos_por_plantel':
-			// Obtener ejecutivos agrupados por plantel con jerarquía y planteles asociados
-			$query = "SELECT e.id_eje, e.nom_eje, e.tel_eje, e.eli_eje, e.id_padre, e.id_pla, 
+			// Obtener ejecutivos agrupados por plantel con jerarquía, planteles asociados y semáforo de sesión
+			$query = "SELECT e.id_eje, e.nom_eje, e.tel_eje, e.eli_eje, e.id_padre, e.id_pla, e.ult_eje,
 					         p.nom_pla,
 					         GROUP_CONCAT(DISTINCT CONCAT(pa.id_pla, ':', pa.nom_pla) SEPARATOR '|') as planteles_asociados,
-					         COUNT(DISTINCT pe.id_pla) as total_planteles_asociados
+					         COUNT(DISTINCT pe.id_pla) as total_planteles_asociados,
+					         CASE 
+					             WHEN e.ult_eje IS NULL THEN 'sin_sesion'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) <= 1 THEN 'verde'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) BETWEEN 2 AND 3 THEN 'amarillo'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) >= 4 THEN 'rojo'
+					             ELSE 'sin_sesion'
+					         END as semaforo_sesion,
+					         TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) as dias_desde_ultima_sesion
 					  FROM ejecutivo e 
 					  LEFT JOIN plantel p ON e.id_pla = p.id_pla 
 					  LEFT JOIN planteles_ejecutivo pe ON e.id_eje = pe.id_eje

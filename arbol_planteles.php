@@ -265,6 +265,171 @@
             background-color: #f8f9fa;
         }
         
+        /* =============================================
+           ESTILOS PARA SEMÁFORO DE SESIÓN P15
+           ============================================= */
+        
+        /* Indicador de semáforo al lado del nombre */
+        .semaforo-sesion {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-left: 8px;
+            margin-right: 4px;
+            position: relative;
+            top: 1px;
+            border: 1px solid rgba(0,0,0,0.2);
+            box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+        }
+        
+        .semaforo-sesion.verde {
+            background-color: #28a745;
+            box-shadow: 0 0 6px rgba(40, 167, 69, 0.5);
+        }
+        
+        .semaforo-sesion.amarillo {
+            background-color: #ffc107;
+            box-shadow: 0 0 6px rgba(255, 193, 7, 0.5);
+        }
+        
+        .semaforo-sesion.rojo {
+            background-color: #dc3545;
+            box-shadow: 0 0 6px rgba(220, 53, 69, 0.5);
+        }
+        
+        .semaforo-sesion.sin_sesion {
+            background-color: #6c757d;
+            box-shadow: 0 0 6px rgba(108, 117, 125, 0.5);
+        }
+        
+        /* Tooltip para mostrar información del semáforo */
+        .semaforo-tooltip {
+            position: absolute;
+            background-color: #333;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+            z-index: 1000;
+            white-space: nowrap;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        }
+        
+        .semaforo-tooltip.show {
+            opacity: 1;
+        }
+        
+        .semaforo-tooltip::before {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: #333 transparent transparent transparent;
+        }
+        
+        /* Mejorar el aspecto de los nodos con semáforo */
+        .jstree-default .jstree-anchor {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .jstree-anchor-content {
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+        }
+        
+        .jstree-anchor-indicators {
+            display: flex;
+            align-items: center;
+            margin-left: 8px;
+        }
+        
+        /* Estilos para el nombre del ejecutivo */
+        .ejecutivo-nombre {
+            flex-grow: 1;
+        }
+        
+        /* Animación para el semáforo */
+        .semaforo-sesion {
+            animation: semaforoPulse 2s infinite;
+        }
+        
+        @keyframes semaforoPulse {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        
+        /* Desactivar animación en semáforos verdes para no distraer */
+        .semaforo-sesion.verde {
+            animation: none;
+        }
+        
+        /* Estilos para estadísticas del semáforo */
+        .stats-semaforo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-top: 10px;
+        }
+        
+        .stat-semaforo {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 14px;
+        }
+        
+        .stat-semaforo .semaforo-sesion {
+            position: static;
+            top: auto;
+            animation: none;
+        }
+        
+        /* Leyenda del semáforo */
+        .semaforo-leyenda {
+            background-color: #e9ecef;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .semaforo-leyenda h6 {
+            margin-bottom: 12px;
+            color: #495057;
+            font-weight: bold;
+        }
+        
+        .leyenda-items {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .leyenda-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            color: #495057;
+        }
+        
+        .leyenda-item .semaforo-sesion {
+            position: static;
+            top: auto;
+            animation: none;
+        }
+        
         /* Panel de control */
         .control-panel {
             background-color: white;
@@ -370,6 +535,29 @@
                     <button class="btn btn-secondary" onclick="recargarTodos()">
                         <i class="fas fa-sync"></i> Recargar
                     </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Leyenda del Semáforo de Sesión P15 -->
+        <div class="semaforo-leyenda">
+            <h6><i class="fas fa-traffic-light"></i> Semáforo de Sesión - Práctica 15</h6>
+            <div class="leyenda-items">
+                <div class="leyenda-item">
+                    <span class="semaforo-sesion verde"></span>
+                    <span>Verde: ≤ 1 día</span>
+                </div>
+                <div class="leyenda-item">
+                    <span class="semaforo-sesion amarillo"></span>
+                    <span>Amarillo: 2-3 días</span>
+                </div>
+                <div class="leyenda-item">
+                    <span class="semaforo-sesion rojo"></span>
+                    <span>Rojo: ≥ 4 días</span>
+                </div>
+                <div class="leyenda-item">
+                    <span class="semaforo-sesion sin_sesion"></span>
+                    <span>Sin sesión</span>
                 </div>
             </div>
         </div>
@@ -746,6 +934,15 @@
             // Configurar drag & drop entre planteles después de crear los árboles
             setTimeout(function() {
                 configurarDragDropEntrePlanteles();
+                
+                // Inicializar tooltips para el semáforo de sesión
+                $('[data-toggle="tooltip"]').tooltip({
+                    placement: 'top',
+                    trigger: 'hover',
+                    delay: { show: 300, hide: 100 }
+                });
+                
+                console.log('Tooltips del semáforo inicializados');
             }, 500);
         }
         
@@ -765,6 +962,41 @@
                 var badge = ejecutivo.eli_eje == 1 ? 
                     '<span class="badge badge-success ml-1">Activo</span>' : 
                     '<span class="badge badge-danger ml-1">Inactivo</span>';
+                
+                // Generar indicador de semáforo de sesión P15
+                var semaforoHtml = '';
+                var tooltipText = '';
+                
+                if (ejecutivo.semaforo_sesion) {
+                    var colorSemaforo = ejecutivo.semaforo_sesion;
+                    
+                    // Generar texto del tooltip
+                    switch(colorSemaforo) {
+                        case 'verde':
+                            tooltipText = 'Sesión reciente (≤1 día)';
+                            if (ejecutivo.dias_desde_ultima_sesion !== null) {
+                                tooltipText += ' - Último acceso: ' + ejecutivo.dias_desde_ultima_sesion + ' día(s)';
+                            }
+                            break;
+                        case 'amarillo':
+                            tooltipText = 'Sesión moderada (2-3 días)';
+                            if (ejecutivo.dias_desde_ultima_sesion !== null) {
+                                tooltipText += ' - Último acceso: ' + ejecutivo.dias_desde_ultima_sesion + ' día(s)';
+                            }
+                            break;
+                        case 'rojo':
+                            tooltipText = 'Sesión antigua (≥4 días)';
+                            if (ejecutivo.dias_desde_ultima_sesion !== null) {
+                                tooltipText += ' - Último acceso: ' + ejecutivo.dias_desde_ultima_sesion + ' día(s)';
+                            }
+                            break;
+                        case 'sin_sesion':
+                            tooltipText = 'Sin registro de sesión';
+                            break;
+                    }
+                    
+                    semaforoHtml = '<span class="semaforo-sesion ' + colorSemaforo + '" title="' + tooltipText + '" data-toggle="tooltip"></span>';
+                }
                 
                 // Generar emojis de planteles asociados
                 var plantelesEmojis = '';
@@ -790,7 +1022,7 @@
                 
                 var nodo = {
                     'id': ejecutivo.id_eje,
-                    'text': ejecutivo.nom_eje + plantelesEmojis + ' ' + badge,
+                    'text': '<div class="jstree-anchor-content"><span class="ejecutivo-nombre">' + ejecutivo.nom_eje + '</span><div class="jstree-anchor-indicators">' + semaforoHtml + plantelesEmojis + ' ' + badge + '</div></div>',
                     'icon': icono,
                     'parent': parent,
                     'data': ejecutivo,
@@ -1133,6 +1365,45 @@
             var plantel = planteles.find(p => p.id_pla == ejecutivo.id_pla);
             var padre = ejecutivos.find(e => e.id_eje == ejecutivo.id_padre);
             
+            // Información del semáforo de sesión
+            var semaforoInfo = '';
+            if (ejecutivo.semaforo_sesion) {
+                var semaforoClass = ejecutivo.semaforo_sesion;
+                var semaforoTexto = '';
+                
+                switch(semaforoClass) {
+                    case 'verde':
+                        semaforoTexto = 'Sesión reciente (≤1 día)';
+                        break;
+                    case 'amarillo':
+                        semaforoTexto = 'Sesión moderada (2-3 días)';
+                        break;
+                    case 'rojo':
+                        semaforoTexto = 'Sesión antigua (≥4 días)';
+                        break;
+                    case 'sin_sesion':
+                        semaforoTexto = 'Sin registro de sesión';
+                        break;
+                }
+                
+                var ultimaSesion = ejecutivo.ult_eje ? new Date(ejecutivo.ult_eje).toLocaleString('es-ES') : 'Nunca';
+                var diasDesde = ejecutivo.dias_desde_ultima_sesion !== null ? ejecutivo.dias_desde_ultima_sesion + ' día(s)' : 'N/A';
+                
+                semaforoInfo = `
+                    <div class="col-12 mt-3">
+                        <h6><i class="fas fa-traffic-light"></i> Estado de Sesión</h6>
+                        <div class="d-flex align-items-center mb-2">
+                            <span class="semaforo-sesion ${semaforoClass} mr-2"></span>
+                            <span>${semaforoTexto}</span>
+                        </div>
+                        <small class="text-muted">
+                            <strong>Última sesión:</strong> ${ultimaSesion}<br>
+                            <strong>Tiempo transcurrido:</strong> ${diasDesde}
+                        </small>
+                    </div>
+                `;
+            }
+            
             var html = `
                 <div class="row">
                     <div class="col-md-6">
@@ -1147,6 +1418,7 @@
                             '<span class="badge badge-danger">Inactivo</span>'
                         }
                     </div>
+                    ${semaforoInfo}
                 </div>
                 <div class="mt-3">
                     <button class="btn btn-sm btn-primary" onclick="mostrarModalEditar()">
@@ -1168,9 +1440,57 @@
             var activos = ejecutivos.filter(e => e.eli_eje == 1).length;
             var ocultos = ejecutivos.filter(e => e.eli_eje == 0).length;
             
-            $('#total-ejecutivos').text(total);
-            $('#ejecutivos-activos').text(activos);
-            $('#ejecutivos-ocultos').text(ocultos);
+            // Estadísticas del semáforo P15
+            var verde = ejecutivos.filter(e => e.semaforo_sesion === 'verde').length;
+            var amarillo = ejecutivos.filter(e => e.semaforo_sesion === 'amarillo').length;
+            var rojo = ejecutivos.filter(e => e.semaforo_sesion === 'rojo').length;
+            var sinSesion = ejecutivos.filter(e => e.semaforo_sesion === 'sin_sesion').length;
+            
+            var html = `
+                <div class="col-md-3 stat-item">
+                    <div class="stat-number" id="total-ejecutivos">${total}</div>
+                    <div class="stat-label">Total Ejecutivos</div>
+                </div>
+                <div class="col-md-3 stat-item">
+                    <div class="stat-number text-success" id="ejecutivos-activos">${activos}</div>
+                    <div class="stat-label">Activos</div>
+                </div>
+                <div class="col-md-3 stat-item">
+                    <div class="stat-number text-danger" id="ejecutivos-ocultos">${ocultos}</div>
+                    <div class="stat-label">Ocultos</div>
+                </div>
+                <div class="col-md-3 stat-item">
+                    <div class="stat-number text-info">${planteles.length}</div>
+                    <div class="stat-label">Planteles</div>
+                </div>
+            `;
+            
+            // Agregar estadísticas del semáforo
+            html += `
+                <div class="col-12 mt-3">
+                    <h6 class="text-center mb-3">Estado de Sesiones</h6>
+                    <div class="stats-semaforo justify-content-center">
+                        <div class="stat-semaforo">
+                            <span class="semaforo-sesion verde"></span>
+                            <span>${verde} Verde</span>
+                        </div>
+                        <div class="stat-semaforo">
+                            <span class="semaforo-sesion amarillo"></span>
+                            <span>${amarillo} Amarillo</span>
+                        </div>
+                        <div class="stat-semaforo">
+                            <span class="semaforo-sesion rojo"></span>
+                            <span>${rojo} Rojo</span>
+                        </div>
+                        <div class="stat-semaforo">
+                            <span class="semaforo-sesion sin_sesion"></span>
+                            <span>${sinSesion} Sin sesión</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            $('#estadisticas').html(html);
         }
         
         function recargarTodos() {

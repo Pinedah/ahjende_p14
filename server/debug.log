@@ -421,3 +421,51 @@
     [fecha_filtro] => 2025-07-10
 )
 
+[2025-07-10 23:24:06] REQUEST recibido: Array
+(
+    [action] => obtener_estructura_tabla
+)
+
+[2025-07-10 23:24:06] REQUEST recibido: Array
+(
+    [action] => obtener_ejecutivos
+)
+
+[2025-07-10 23:24:06] REQUEST recibido: Array
+(
+    [action] => obtener_citas
+    [fecha_filtro] => 2025-07-10
+)
+
+[2025-07-10 23:43:33] REQUEST recibido: Array
+(
+    [action] => obtener_estructura_tabla
+)
+
+[2025-07-10 23:43:33] REQUEST recibido: Array
+(
+    [action] => obtener_ejecutivos
+)
+
+[2025-07-10 23:43:33] REQUEST recibido: Array
+(
+    [action] => obtener_citas
+    [fecha_filtro] => 2025-07-10
+)
+
+[2025-07-10 23:43:55] REQUEST recibido: Array
+(
+    [action] => obtener_estructura_tabla
+)
+
+[2025-07-10 23:43:55] REQUEST recibido: Array
+(
+    [action] => obtener_ejecutivos
+)
+
+[2025-07-10 23:43:55] REQUEST recibido: Array
+(
+    [action] => obtener_citas
+    [fecha_filtro] => 2025-07-10
+)
+

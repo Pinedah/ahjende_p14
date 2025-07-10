@@ -733,3 +733,1656 @@
     [action] => obtener_historial_ejecutivo
 )
 
+[2025-07-10 23:01:45] REQUEST recibido: Array
+(
+    [action] => obtener_ejecutivos_por_plantel
+)
+
+[2025-07-10 23:01:45] Query ejecutivos por plantel: SELECT e.id_eje, e.nom_eje, e.tel_eje, e.eli_eje, e.id_padre, e.id_pla, e.ult_eje,
+					         p.nom_pla,
+					         GROUP_CONCAT(DISTINCT CONCAT(pa.id_pla, ':', pa.nom_pla) SEPARATOR '|') as planteles_asociados,
+					         COUNT(DISTINCT pe.id_pla) as total_planteles_asociados,
+					         CASE 
+					             WHEN e.ult_eje IS NULL THEN 'sin_sesion'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) <= 1 THEN 'verde'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) BETWEEN 2 AND 3 THEN 'amarillo'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) >= 4 THEN 'rojo'
+					             ELSE 'sin_sesion'
+					         END as semaforo_sesion,
+					         TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) as dias_desde_ultima_sesion
+					  FROM ejecutivo e 
+					  LEFT JOIN plantel p ON e.id_pla = p.id_pla 
+					  LEFT JOIN planteles_ejecutivo pe ON e.id_eje = pe.id_eje
+					  LEFT JOIN plantel pa ON pe.id_pla = pa.id_pla
+					  GROUP BY e.id_eje
+					  ORDER BY e.id_pla, e.eli_eje DESC, e.nom_eje ASC
+[2025-07-10 23:01:45] Ejecutivos por plantel encontrados: 17
+[2025-07-10 23:06:47] REQUEST recibido: Array
+(
+    [action] => obtener_planteles
+)
+
+[2025-07-10 23:06:47] Query planteles: SELECT id_pla, nom_pla, fec_pla FROM plantel ORDER BY nom_pla ASC
+[2025-07-10 23:06:47] Planteles encontrados: 3
+[2025-07-10 23:06:47] REQUEST recibido: Array
+(
+    [action] => obtener_ejecutivos_por_plantel
+)
+
+[2025-07-10 23:06:47] Query ejecutivos por plantel: SELECT e.id_eje, e.nom_eje, e.tel_eje, e.eli_eje, e.id_padre, e.id_pla, e.ult_eje,
+					         p.nom_pla,
+					         GROUP_CONCAT(DISTINCT CONCAT(pa.id_pla, ':', pa.nom_pla) SEPARATOR '|') as planteles_asociados,
+					         COUNT(DISTINCT pe.id_pla) as total_planteles_asociados,
+					         CASE 
+					             WHEN e.ult_eje IS NULL THEN 'sin_sesion'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) <= 1 THEN 'verde'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) BETWEEN 2 AND 3 THEN 'amarillo'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) >= 4 THEN 'rojo'
+					             ELSE 'sin_sesion'
+					         END as semaforo_sesion,
+					         TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) as dias_desde_ultima_sesion
+					  FROM ejecutivo e 
+					  LEFT JOIN plantel p ON e.id_pla = p.id_pla 
+					  LEFT JOIN planteles_ejecutivo pe ON e.id_eje = pe.id_eje
+					  LEFT JOIN plantel pa ON pe.id_pla = pa.id_pla
+					  GROUP BY e.id_eje
+					  ORDER BY e.id_pla, e.eli_eje DESC, e.nom_eje ASC
+[2025-07-10 23:06:47] Ejecutivos por plantel encontrados: 17
+[2025-07-10 23:07:54] REQUEST recibido: Array
+(
+    [action] => obtener_ejecutivos_por_plantel
+)
+
+[2025-07-10 23:07:54] Query ejecutivos por plantel: SELECT e.id_eje, e.nom_eje, e.tel_eje, e.eli_eje, e.id_padre, e.id_pla, e.ult_eje,
+					         p.nom_pla,
+					         GROUP_CONCAT(DISTINCT CONCAT(pa.id_pla, ':', pa.nom_pla) SEPARATOR '|') as planteles_asociados,
+					         COUNT(DISTINCT pe.id_pla) as total_planteles_asociados,
+					         CASE 
+					             WHEN e.ult_eje IS NULL THEN 'sin_sesion'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) <= 1 THEN 'verde'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) BETWEEN 2 AND 3 THEN 'amarillo'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) >= 4 THEN 'rojo'
+					             ELSE 'sin_sesion'
+					         END as semaforo_sesion,
+					         TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) as dias_desde_ultima_sesion
+					  FROM ejecutivo e 
+					  LEFT JOIN plantel p ON e.id_pla = p.id_pla 
+					  LEFT JOIN planteles_ejecutivo pe ON e.id_eje = pe.id_eje
+					  LEFT JOIN plantel pa ON pe.id_pla = pa.id_pla
+					  GROUP BY e.id_eje
+					  ORDER BY e.id_pla, e.eli_eje DESC, e.nom_eje ASC
+[2025-07-10 23:07:54] Ejecutivos por plantel encontrados: 17
+[2025-07-10 23:24:22] REQUEST recibido: Array
+(
+    [action] => obtener_planteles
+)
+
+[2025-07-10 23:24:22] Query planteles: SELECT id_pla, nom_pla, fec_pla FROM plantel ORDER BY nom_pla ASC
+[2025-07-10 23:24:22] Planteles encontrados: 3
+[2025-07-10 23:24:22] REQUEST recibido: Array
+(
+    [action] => obtener_ejecutivos_por_plantel
+)
+
+[2025-07-10 23:24:22] Query ejecutivos por plantel: SELECT e.id_eje, e.nom_eje, e.tel_eje, e.eli_eje, e.id_padre, e.id_pla, e.ult_eje,
+					         p.nom_pla,
+					         GROUP_CONCAT(DISTINCT CONCAT(pa.id_pla, ':', pa.nom_pla) SEPARATOR '|') as planteles_asociados,
+					         COUNT(DISTINCT pe.id_pla) as total_planteles_asociados,
+					         CASE 
+					             WHEN e.ult_eje IS NULL THEN 'sin_sesion'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) <= 1 THEN 'verde'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) BETWEEN 2 AND 3 THEN 'amarillo'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) >= 4 THEN 'rojo'
+					             ELSE 'sin_sesion'
+					         END as semaforo_sesion,
+					         TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) as dias_desde_ultima_sesion
+					  FROM ejecutivo e 
+					  LEFT JOIN plantel p ON e.id_pla = p.id_pla 
+					  LEFT JOIN planteles_ejecutivo pe ON e.id_eje = pe.id_eje
+					  LEFT JOIN plantel pa ON pe.id_pla = pa.id_pla
+					  GROUP BY e.id_eje
+					  ORDER BY e.id_pla, e.eli_eje DESC, e.nom_eje ASC
+[2025-07-10 23:24:22] Ejecutivos por plantel encontrados: 17
+[2025-07-10 23:29:59] REQUEST recibido: Array
+(
+    [action] => obtener_planteles
+)
+
+[2025-07-10 23:29:59] Query planteles: SELECT id_pla, nom_pla, fec_pla FROM plantel ORDER BY nom_pla ASC
+[2025-07-10 23:29:59] Planteles encontrados: 3
+[2025-07-10 23:29:59] REQUEST recibido: Array
+(
+    [action] => obtener_ejecutivos_por_plantel
+)
+
+[2025-07-10 23:29:59] Query ejecutivos por plantel: SELECT e.id_eje, e.nom_eje, e.tel_eje, e.eli_eje, e.id_padre, e.id_pla, e.ult_eje,
+					         p.nom_pla,
+					         GROUP_CONCAT(DISTINCT CONCAT(pa.id_pla, ':', pa.nom_pla) SEPARATOR '|') as planteles_asociados,
+					         COUNT(DISTINCT pe.id_pla) as total_planteles_asociados,
+					         CASE 
+					             WHEN e.ult_eje IS NULL THEN 'sin_sesion'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) <= 1 THEN 'verde'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) BETWEEN 2 AND 3 THEN 'amarillo'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) >= 4 THEN 'rojo'
+					             ELSE 'sin_sesion'
+					         END as semaforo_sesion,
+					         TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) as dias_desde_ultima_sesion
+					  FROM ejecutivo e 
+					  LEFT JOIN plantel p ON e.id_pla = p.id_pla 
+					  LEFT JOIN planteles_ejecutivo pe ON e.id_eje = pe.id_eje
+					  LEFT JOIN plantel pa ON pe.id_pla = pa.id_pla
+					  GROUP BY e.id_eje
+					  ORDER BY e.id_pla, e.eli_eje DESC, e.nom_eje ASC
+[2025-07-10 23:29:59] Ejecutivos por plantel encontrados: 17
+[2025-07-10 23:30:04] REQUEST recibido: Array
+(
+    [action] => mover_ejecutivo
+    [id_eje] => 4
+    [id_padre] => 
+    [id_pla] => 6
+)
+
+[2025-07-10 23:30:04] ==============================================
+[2025-07-10 23:30:04] MOVER EJECUTIVO - REQUEST RECIBIDO
+[2025-07-10 23:30:04] POST data completo: Array
+(
+    [action] => mover_ejecutivo
+    [id_eje] => 4
+    [id_padre] => 
+    [id_pla] => 6
+)
+
+[2025-07-10 23:30:04] Valores procesados:
+[2025-07-10 23:30:04] - ID Ejecutivo: 4
+[2025-07-10 23:30:04] - ID Padre: NULL
+[2025-07-10 23:30:04] - ID Plantel: 6
+[2025-07-10 23:30:04] ANTES - Ejecutivo: Francisco Pineda, Padre anterior: , Plantel anterior: 3
+[2025-07-10 23:30:04] NUEVO PLANTEL: Plantel Cuautitlán (ID: 6)
+[2025-07-10 23:30:04] QUERY MOVER: UPDATE ejecutivo SET id_padre = NULL, id_pla = '6' WHERE id_eje = '4'
+[2025-07-10 23:30:04] VERIFICACIÓN - Nuevo padre: , Nuevo plantel: 6
+[2025-07-10 23:30:04] EJECUTIVO MOVIDO EXITOSAMENTE
+[2025-07-10 23:30:04] RESPUESTA ENVIADA: SUCCESS
+[2025-07-10 23:30:04] ==============================================
+[2025-07-10 23:30:04] REQUEST recibido: Array
+(
+    [action] => obtener_ejecutivos_por_plantel
+)
+
+[2025-07-10 23:30:04] Query ejecutivos por plantel: SELECT e.id_eje, e.nom_eje, e.tel_eje, e.eli_eje, e.id_padre, e.id_pla, e.ult_eje,
+					         p.nom_pla,
+					         GROUP_CONCAT(DISTINCT CONCAT(pa.id_pla, ':', pa.nom_pla) SEPARATOR '|') as planteles_asociados,
+					         COUNT(DISTINCT pe.id_pla) as total_planteles_asociados,
+					         CASE 
+					             WHEN e.ult_eje IS NULL THEN 'sin_sesion'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) <= 1 THEN 'verde'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) BETWEEN 2 AND 3 THEN 'amarillo'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) >= 4 THEN 'rojo'
+					             ELSE 'sin_sesion'
+					         END as semaforo_sesion,
+					         TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) as dias_desde_ultima_sesion
+					  FROM ejecutivo e 
+					  LEFT JOIN plantel p ON e.id_pla = p.id_pla 
+					  LEFT JOIN planteles_ejecutivo pe ON e.id_eje = pe.id_eje
+					  LEFT JOIN plantel pa ON pe.id_pla = pa.id_pla
+					  GROUP BY e.id_eje
+					  ORDER BY e.id_pla, e.eli_eje DESC, e.nom_eje ASC
+[2025-07-10 23:30:04] Ejecutivos por plantel encontrados: 17
+[2025-07-10 23:30:06] REQUEST recibido: Array
+(
+    [action] => obtener_planteles
+)
+
+[2025-07-10 23:30:06] Query planteles: SELECT id_pla, nom_pla, fec_pla FROM plantel ORDER BY nom_pla ASC
+[2025-07-10 23:30:06] Planteles encontrados: 3
+[2025-07-10 23:30:06] REQUEST recibido: Array
+(
+    [action] => obtener_ejecutivos_por_plantel
+)
+
+[2025-07-10 23:30:06] Query ejecutivos por plantel: SELECT e.id_eje, e.nom_eje, e.tel_eje, e.eli_eje, e.id_padre, e.id_pla, e.ult_eje,
+					         p.nom_pla,
+					         GROUP_CONCAT(DISTINCT CONCAT(pa.id_pla, ':', pa.nom_pla) SEPARATOR '|') as planteles_asociados,
+					         COUNT(DISTINCT pe.id_pla) as total_planteles_asociados,
+					         CASE 
+					             WHEN e.ult_eje IS NULL THEN 'sin_sesion'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) <= 1 THEN 'verde'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) BETWEEN 2 AND 3 THEN 'amarillo'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) >= 4 THEN 'rojo'
+					             ELSE 'sin_sesion'
+					         END as semaforo_sesion,
+					         TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) as dias_desde_ultima_sesion
+					  FROM ejecutivo e 
+					  LEFT JOIN plantel p ON e.id_pla = p.id_pla 
+					  LEFT JOIN planteles_ejecutivo pe ON e.id_eje = pe.id_eje
+					  LEFT JOIN plantel pa ON pe.id_pla = pa.id_pla
+					  GROUP BY e.id_eje
+					  ORDER BY e.id_pla, e.eli_eje DESC, e.nom_eje ASC
+[2025-07-10 23:30:06] Ejecutivos por plantel encontrados: 17
+[2025-07-10 23:43:09] REQUEST recibido: Array
+(
+    [action] => obtener_planteles
+)
+
+[2025-07-10 23:43:09] Query planteles: SELECT id_pla, nom_pla, fec_pla FROM plantel ORDER BY nom_pla ASC
+[2025-07-10 23:43:09] Planteles encontrados: 3
+[2025-07-10 23:43:09] REQUEST recibido: Array
+(
+    [action] => obtener_ejecutivos_por_plantel
+)
+
+[2025-07-10 23:43:09] Query ejecutivos por plantel: SELECT e.id_eje, e.nom_eje, e.tel_eje, e.eli_eje, e.id_padre, e.id_pla, e.ult_eje,
+					         p.nom_pla,
+					         GROUP_CONCAT(DISTINCT CONCAT(pa.id_pla, ':', pa.nom_pla) SEPARATOR '|') as planteles_asociados,
+					         COUNT(DISTINCT pe.id_pla) as total_planteles_asociados,
+					         CASE 
+					             WHEN e.ult_eje IS NULL THEN 'sin_sesion'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) <= 1 THEN 'verde'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) BETWEEN 2 AND 3 THEN 'amarillo'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) >= 4 THEN 'rojo'
+					             ELSE 'sin_sesion'
+					         END as semaforo_sesion,
+					         TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) as dias_desde_ultima_sesion
+					  FROM ejecutivo e 
+					  LEFT JOIN plantel p ON e.id_pla = p.id_pla 
+					  LEFT JOIN planteles_ejecutivo pe ON e.id_eje = pe.id_eje
+					  LEFT JOIN plantel pa ON pe.id_pla = pa.id_pla
+					  GROUP BY e.id_eje
+					  ORDER BY e.id_pla, e.eli_eje DESC, e.nom_eje ASC
+[2025-07-10 23:43:09] Ejecutivos por plantel encontrados: 17
+[2025-07-10 23:44:01] REQUEST recibido: Array
+(
+    [action] => obtener_planteles
+)
+
+[2025-07-10 23:44:01] Query planteles: SELECT id_pla, nom_pla, fec_pla FROM plantel ORDER BY nom_pla ASC
+[2025-07-10 23:44:01] Planteles encontrados: 3
+[2025-07-10 23:44:01] REQUEST recibido: Array
+(
+    [action] => obtener_ejecutivos_por_plantel
+)
+
+[2025-07-10 23:44:01] Query ejecutivos por plantel: SELECT e.id_eje, e.nom_eje, e.tel_eje, e.eli_eje, e.id_padre, e.id_pla, e.ult_eje,
+					         p.nom_pla,
+					         GROUP_CONCAT(DISTINCT CONCAT(pa.id_pla, ':', pa.nom_pla) SEPARATOR '|') as planteles_asociados,
+					         COUNT(DISTINCT pe.id_pla) as total_planteles_asociados,
+					         CASE 
+					             WHEN e.ult_eje IS NULL THEN 'sin_sesion'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) <= 1 THEN 'verde'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) BETWEEN 2 AND 3 THEN 'amarillo'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) >= 4 THEN 'rojo'
+					             ELSE 'sin_sesion'
+					         END as semaforo_sesion,
+					         TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) as dias_desde_ultima_sesion
+					  FROM ejecutivo e 
+					  LEFT JOIN plantel p ON e.id_pla = p.id_pla 
+					  LEFT JOIN planteles_ejecutivo pe ON e.id_eje = pe.id_eje
+					  LEFT JOIN plantel pa ON pe.id_pla = pa.id_pla
+					  GROUP BY e.id_eje
+					  ORDER BY e.id_pla, e.eli_eje DESC, e.nom_eje ASC
+[2025-07-10 23:44:01] Ejecutivos por plantel encontrados: 17
+[2025-07-10 23:44:03] REQUEST recibido: Array
+(
+    [action] => obtener_planteles
+)
+
+[2025-07-10 23:44:03] Query planteles: SELECT id_pla, nom_pla, fec_pla FROM plantel ORDER BY nom_pla ASC
+[2025-07-10 23:44:03] Planteles encontrados: 3
+[2025-07-10 23:44:03] REQUEST recibido: Array
+(
+    [action] => obtener_ejecutivos_por_plantel
+)
+
+[2025-07-10 23:44:03] Query ejecutivos por plantel: SELECT e.id_eje, e.nom_eje, e.tel_eje, e.eli_eje, e.id_padre, e.id_pla, e.ult_eje,
+					         p.nom_pla,
+					         GROUP_CONCAT(DISTINCT CONCAT(pa.id_pla, ':', pa.nom_pla) SEPARATOR '|') as planteles_asociados,
+					         COUNT(DISTINCT pe.id_pla) as total_planteles_asociados,
+					         CASE 
+					             WHEN e.ult_eje IS NULL THEN 'sin_sesion'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) <= 1 THEN 'verde'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) BETWEEN 2 AND 3 THEN 'amarillo'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) >= 4 THEN 'rojo'
+					             ELSE 'sin_sesion'
+					         END as semaforo_sesion,
+					         TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) as dias_desde_ultima_sesion
+					  FROM ejecutivo e 
+					  LEFT JOIN plantel p ON e.id_pla = p.id_pla 
+					  LEFT JOIN planteles_ejecutivo pe ON e.id_eje = pe.id_eje
+					  LEFT JOIN plantel pa ON pe.id_pla = pa.id_pla
+					  GROUP BY e.id_eje
+					  ORDER BY e.id_pla, e.eli_eje DESC, e.nom_eje ASC
+[2025-07-10 23:44:03] Ejecutivos por plantel encontrados: 17
+[2025-07-10 23:44:27] REQUEST recibido: Array
+(
+    [action] => obtener_planteles
+)
+
+[2025-07-10 23:44:27] Query planteles: SELECT id_pla, nom_pla, fec_pla FROM plantel ORDER BY nom_pla ASC
+[2025-07-10 23:44:27] Planteles encontrados: 3
+[2025-07-10 23:44:27] REQUEST recibido: Array
+(
+    [action] => obtener_ejecutivos_por_plantel
+)
+
+[2025-07-10 23:44:27] Query ejecutivos por plantel: SELECT e.id_eje, e.nom_eje, e.tel_eje, e.eli_eje, e.id_padre, e.id_pla, e.ult_eje,
+					         p.nom_pla,
+					         GROUP_CONCAT(DISTINCT CONCAT(pa.id_pla, ':', pa.nom_pla) SEPARATOR '|') as planteles_asociados,
+					         COUNT(DISTINCT pe.id_pla) as total_planteles_asociados,
+					         CASE 
+					             WHEN e.ult_eje IS NULL THEN 'sin_sesion'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) <= 1 THEN 'verde'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) BETWEEN 2 AND 3 THEN 'amarillo'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) >= 4 THEN 'rojo'
+					             ELSE 'sin_sesion'
+					         END as semaforo_sesion,
+					         TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) as dias_desde_ultima_sesion
+					  FROM ejecutivo e 
+					  LEFT JOIN plantel p ON e.id_pla = p.id_pla 
+					  LEFT JOIN planteles_ejecutivo pe ON e.id_eje = pe.id_eje
+					  LEFT JOIN plantel pa ON pe.id_pla = pa.id_pla
+					  GROUP BY e.id_eje
+					  ORDER BY e.id_pla, e.eli_eje DESC, e.nom_eje ASC
+[2025-07-10 23:44:27] Ejecutivos por plantel encontrados: 17
+[2025-07-10 23:45:39] REQUEST recibido: Array
+(
+    [action] => obtener_planteles
+)
+
+[2025-07-10 23:45:39] Query planteles: SELECT id_pla, nom_pla, fec_pla FROM plantel ORDER BY nom_pla ASC
+[2025-07-10 23:45:39] Planteles encontrados: 3
+[2025-07-10 23:45:39] REQUEST recibido: Array
+(
+    [action] => obtener_ejecutivos_por_plantel
+)
+
+[2025-07-10 23:45:39] Query ejecutivos por plantel: SELECT e.id_eje, e.nom_eje, e.tel_eje, e.eli_eje, e.id_padre, e.id_pla, e.ult_eje,
+					         p.nom_pla,
+					         GROUP_CONCAT(DISTINCT CONCAT(pa.id_pla, ':', pa.nom_pla) SEPARATOR '|') as planteles_asociados,
+					         COUNT(DISTINCT pe.id_pla) as total_planteles_asociados,
+					         CASE 
+					             WHEN e.ult_eje IS NULL THEN 'sin_sesion'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) <= 1 THEN 'verde'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) BETWEEN 2 AND 3 THEN 'amarillo'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) >= 4 THEN 'rojo'
+					             ELSE 'sin_sesion'
+					         END as semaforo_sesion,
+					         TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) as dias_desde_ultima_sesion
+					  FROM ejecutivo e 
+					  LEFT JOIN plantel p ON e.id_pla = p.id_pla 
+					  LEFT JOIN planteles_ejecutivo pe ON e.id_eje = pe.id_eje
+					  LEFT JOIN plantel pa ON pe.id_pla = pa.id_pla
+					  GROUP BY e.id_eje
+					  ORDER BY e.id_pla, e.eli_eje DESC, e.nom_eje ASC
+[2025-07-10 23:45:39] Ejecutivos por plantel encontrados: 14
+[2025-07-10 23:45:48] REQUEST recibido: Array
+(
+    [action] => mover_ejecutivo
+    [id_eje] => 17
+    [id_padre] => 
+    [id_pla] => 3
+)
+
+[2025-07-10 23:45:48] ==============================================
+[2025-07-10 23:45:48] MOVER EJECUTIVO - REQUEST RECIBIDO
+[2025-07-10 23:45:48] POST data completo: Array
+(
+    [action] => mover_ejecutivo
+    [id_eje] => 17
+    [id_padre] => 
+    [id_pla] => 3
+)
+
+[2025-07-10 23:45:48] Valores procesados:
+[2025-07-10 23:45:48] - ID Ejecutivo: 17
+[2025-07-10 23:45:48] - ID Padre: NULL
+[2025-07-10 23:45:48] - ID Plantel: 3
+[2025-07-10 23:45:48] ANTES - Ejecutivo: Test Ejecutivo P14 MODIFICADO, Padre anterior: , Plantel anterior: 2
+[2025-07-10 23:45:48] NUEVO PLANTEL: Plantel Ecatepec (ID: 3)
+[2025-07-10 23:45:48] QUERY MOVER: UPDATE ejecutivo SET id_padre = NULL, id_pla = '3' WHERE id_eje = '17'
+[2025-07-10 23:45:48] VERIFICACIÓN - Nuevo padre: , Nuevo plantel: 3
+[2025-07-10 23:45:48] EJECUTIVO MOVIDO EXITOSAMENTE
+[2025-07-10 23:45:48] RESPUESTA ENVIADA: SUCCESS
+[2025-07-10 23:45:48] ==============================================
+[2025-07-10 23:45:48] REQUEST recibido: Array
+(
+    [action] => obtener_ejecutivos_por_plantel
+)
+
+[2025-07-10 23:45:48] Query ejecutivos por plantel: SELECT e.id_eje, e.nom_eje, e.tel_eje, e.eli_eje, e.id_padre, e.id_pla, e.ult_eje,
+					         p.nom_pla,
+					         GROUP_CONCAT(DISTINCT CONCAT(pa.id_pla, ':', pa.nom_pla) SEPARATOR '|') as planteles_asociados,
+					         COUNT(DISTINCT pe.id_pla) as total_planteles_asociados,
+					         CASE 
+					             WHEN e.ult_eje IS NULL THEN 'sin_sesion'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) <= 1 THEN 'verde'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) BETWEEN 2 AND 3 THEN 'amarillo'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) >= 4 THEN 'rojo'
+					             ELSE 'sin_sesion'
+					         END as semaforo_sesion,
+					         TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) as dias_desde_ultima_sesion
+					  FROM ejecutivo e 
+					  LEFT JOIN plantel p ON e.id_pla = p.id_pla 
+					  LEFT JOIN planteles_ejecutivo pe ON e.id_eje = pe.id_eje
+					  LEFT JOIN plantel pa ON pe.id_pla = pa.id_pla
+					  GROUP BY e.id_eje
+					  ORDER BY e.id_pla, e.eli_eje DESC, e.nom_eje ASC
+[2025-07-10 23:45:48] Ejecutivos por plantel encontrados: 14
+[2025-07-10 23:45:51] REQUEST recibido: Array
+(
+    [action] => mover_ejecutivo
+    [id_eje] => 17
+    [id_padre] => 1
+    [id_pla] => 3
+)
+
+[2025-07-10 23:45:51] ==============================================
+[2025-07-10 23:45:51] MOVER EJECUTIVO - REQUEST RECIBIDO
+[2025-07-10 23:45:51] POST data completo: Array
+(
+    [action] => mover_ejecutivo
+    [id_eje] => 17
+    [id_padre] => 1
+    [id_pla] => 3
+)
+
+[2025-07-10 23:45:51] Valores procesados:
+[2025-07-10 23:45:51] - ID Ejecutivo: 17
+[2025-07-10 23:45:51] - ID Padre: 1
+[2025-07-10 23:45:51] - ID Plantel: 3
+[2025-07-10 23:45:51] ANTES - Ejecutivo: Test Ejecutivo P14 MODIFICADO, Padre anterior: , Plantel anterior: 3
+[2025-07-10 23:45:51] REQUEST recibido: Array
+(
+    [action] => obtener_ejecutivos_por_plantel
+)
+
+[2025-07-10 23:45:51] Query ejecutivos por plantel: SELECT e.id_eje, e.nom_eje, e.tel_eje, e.eli_eje, e.id_padre, e.id_pla, e.ult_eje,
+					         p.nom_pla,
+					         GROUP_CONCAT(DISTINCT CONCAT(pa.id_pla, ':', pa.nom_pla) SEPARATOR '|') as planteles_asociados,
+					         COUNT(DISTINCT pe.id_pla) as total_planteles_asociados,
+					         CASE 
+					             WHEN e.ult_eje IS NULL THEN 'sin_sesion'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) <= 1 THEN 'verde'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) BETWEEN 2 AND 3 THEN 'amarillo'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) >= 4 THEN 'rojo'
+					             ELSE 'sin_sesion'
+					         END as semaforo_sesion,
+					         TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) as dias_desde_ultima_sesion
+					  FROM ejecutivo e 
+					  LEFT JOIN plantel p ON e.id_pla = p.id_pla 
+					  LEFT JOIN planteles_ejecutivo pe ON e.id_eje = pe.id_eje
+					  LEFT JOIN plantel pa ON pe.id_pla = pa.id_pla
+					  GROUP BY e.id_eje
+					  ORDER BY e.id_pla, e.eli_eje DESC, e.nom_eje ASC
+[2025-07-10 23:45:51] Ejecutivos por plantel encontrados: 14
+[2025-07-10 23:45:53] REQUEST recibido: Array
+(
+    [action] => mover_ejecutivo
+    [id_eje] => 17
+    [id_padre] => 1
+    [id_pla] => 3
+)
+
+[2025-07-10 23:45:53] ==============================================
+[2025-07-10 23:45:53] MOVER EJECUTIVO - REQUEST RECIBIDO
+[2025-07-10 23:45:53] POST data completo: Array
+(
+    [action] => mover_ejecutivo
+    [id_eje] => 17
+    [id_padre] => 1
+    [id_pla] => 3
+)
+
+[2025-07-10 23:45:53] Valores procesados:
+[2025-07-10 23:45:53] - ID Ejecutivo: 17
+[2025-07-10 23:45:53] - ID Padre: 1
+[2025-07-10 23:45:53] - ID Plantel: 3
+[2025-07-10 23:45:53] ANTES - Ejecutivo: Test Ejecutivo P14 MODIFICADO, Padre anterior: , Plantel anterior: 3
+[2025-07-10 23:45:53] REQUEST recibido: Array
+(
+    [action] => obtener_ejecutivos_por_plantel
+)
+
+[2025-07-10 23:45:53] Query ejecutivos por plantel: SELECT e.id_eje, e.nom_eje, e.tel_eje, e.eli_eje, e.id_padre, e.id_pla, e.ult_eje,
+					         p.nom_pla,
+					         GROUP_CONCAT(DISTINCT CONCAT(pa.id_pla, ':', pa.nom_pla) SEPARATOR '|') as planteles_asociados,
+					         COUNT(DISTINCT pe.id_pla) as total_planteles_asociados,
+					         CASE 
+					             WHEN e.ult_eje IS NULL THEN 'sin_sesion'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) <= 1 THEN 'verde'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) BETWEEN 2 AND 3 THEN 'amarillo'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) >= 4 THEN 'rojo'
+					             ELSE 'sin_sesion'
+					         END as semaforo_sesion,
+					         TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) as dias_desde_ultima_sesion
+					  FROM ejecutivo e 
+					  LEFT JOIN plantel p ON e.id_pla = p.id_pla 
+					  LEFT JOIN planteles_ejecutivo pe ON e.id_eje = pe.id_eje
+					  LEFT JOIN plantel pa ON pe.id_pla = pa.id_pla
+					  GROUP BY e.id_eje
+					  ORDER BY e.id_pla, e.eli_eje DESC, e.nom_eje ASC
+[2025-07-10 23:45:53] Ejecutivos por plantel encontrados: 14
+[2025-07-10 23:45:55] REQUEST recibido: Array
+(
+    [action] => obtener_planteles
+)
+
+[2025-07-10 23:45:55] Query planteles: SELECT id_pla, nom_pla, fec_pla FROM plantel ORDER BY nom_pla ASC
+[2025-07-10 23:45:55] Planteles encontrados: 3
+[2025-07-10 23:45:55] REQUEST recibido: Array
+(
+    [action] => obtener_ejecutivos_por_plantel
+)
+
+[2025-07-10 23:45:55] Query ejecutivos por plantel: SELECT e.id_eje, e.nom_eje, e.tel_eje, e.eli_eje, e.id_padre, e.id_pla, e.ult_eje,
+					         p.nom_pla,
+					         GROUP_CONCAT(DISTINCT CONCAT(pa.id_pla, ':', pa.nom_pla) SEPARATOR '|') as planteles_asociados,
+					         COUNT(DISTINCT pe.id_pla) as total_planteles_asociados,
+					         CASE 
+					             WHEN e.ult_eje IS NULL THEN 'sin_sesion'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) <= 1 THEN 'verde'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) BETWEEN 2 AND 3 THEN 'amarillo'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) >= 4 THEN 'rojo'
+					             ELSE 'sin_sesion'
+					         END as semaforo_sesion,
+					         TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) as dias_desde_ultima_sesion
+					  FROM ejecutivo e 
+					  LEFT JOIN plantel p ON e.id_pla = p.id_pla 
+					  LEFT JOIN planteles_ejecutivo pe ON e.id_eje = pe.id_eje
+					  LEFT JOIN plantel pa ON pe.id_pla = pa.id_pla
+					  GROUP BY e.id_eje
+					  ORDER BY e.id_pla, e.eli_eje DESC, e.nom_eje ASC
+[2025-07-10 23:45:55] Ejecutivos por plantel encontrados: 14
+[2025-07-10 23:46:08] REQUEST recibido: Array
+(
+    [action] => mover_ejecutivo
+    [id_eje] => 4
+    [id_padre] => 
+    [id_pla] => 3
+)
+
+[2025-07-10 23:46:08] ==============================================
+[2025-07-10 23:46:08] MOVER EJECUTIVO - REQUEST RECIBIDO
+[2025-07-10 23:46:08] POST data completo: Array
+(
+    [action] => mover_ejecutivo
+    [id_eje] => 4
+    [id_padre] => 
+    [id_pla] => 3
+)
+
+[2025-07-10 23:46:08] Valores procesados:
+[2025-07-10 23:46:08] - ID Ejecutivo: 4
+[2025-07-10 23:46:08] - ID Padre: NULL
+[2025-07-10 23:46:08] - ID Plantel: 3
+[2025-07-10 23:46:08] ANTES - Ejecutivo: Francisco Pineda, Padre anterior: , Plantel anterior: 6
+[2025-07-10 23:46:08] NUEVO PLANTEL: Plantel Ecatepec (ID: 3)
+[2025-07-10 23:46:08] QUERY MOVER: UPDATE ejecutivo SET id_padre = NULL, id_pla = '3' WHERE id_eje = '4'
+[2025-07-10 23:46:08] VERIFICACIÓN - Nuevo padre: , Nuevo plantel: 3
+[2025-07-10 23:46:08] EJECUTIVO MOVIDO EXITOSAMENTE
+[2025-07-10 23:46:08] RESPUESTA ENVIADA: SUCCESS
+[2025-07-10 23:46:08] ==============================================
+[2025-07-10 23:46:08] REQUEST recibido: Array
+(
+    [action] => obtener_ejecutivos_por_plantel
+)
+
+[2025-07-10 23:46:08] Query ejecutivos por plantel: SELECT e.id_eje, e.nom_eje, e.tel_eje, e.eli_eje, e.id_padre, e.id_pla, e.ult_eje,
+					         p.nom_pla,
+					         GROUP_CONCAT(DISTINCT CONCAT(pa.id_pla, ':', pa.nom_pla) SEPARATOR '|') as planteles_asociados,
+					         COUNT(DISTINCT pe.id_pla) as total_planteles_asociados,
+					         CASE 
+					             WHEN e.ult_eje IS NULL THEN 'sin_sesion'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) <= 1 THEN 'verde'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) BETWEEN 2 AND 3 THEN 'amarillo'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) >= 4 THEN 'rojo'
+					             ELSE 'sin_sesion'
+					         END as semaforo_sesion,
+					         TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) as dias_desde_ultima_sesion
+					  FROM ejecutivo e 
+					  LEFT JOIN plantel p ON e.id_pla = p.id_pla 
+					  LEFT JOIN planteles_ejecutivo pe ON e.id_eje = pe.id_eje
+					  LEFT JOIN plantel pa ON pe.id_pla = pa.id_pla
+					  GROUP BY e.id_eje
+					  ORDER BY e.id_pla, e.eli_eje DESC, e.nom_eje ASC
+[2025-07-10 23:46:08] Ejecutivos por plantel encontrados: 14
+[2025-07-10 23:46:13] REQUEST recibido: Array
+(
+    [action] => mover_ejecutivo
+    [id_eje] => 4
+    [id_padre] => 
+    [id_pla] => 3
+)
+
+[2025-07-10 23:46:13] ==============================================
+[2025-07-10 23:46:13] MOVER EJECUTIVO - REQUEST RECIBIDO
+[2025-07-10 23:46:13] POST data completo: Array
+(
+    [action] => mover_ejecutivo
+    [id_eje] => 4
+    [id_padre] => 
+    [id_pla] => 3
+)
+
+[2025-07-10 23:46:13] Valores procesados:
+[2025-07-10 23:46:13] - ID Ejecutivo: 4
+[2025-07-10 23:46:13] - ID Padre: NULL
+[2025-07-10 23:46:13] - ID Plantel: 3
+[2025-07-10 23:46:13] ANTES - Ejecutivo: Francisco Pineda, Padre anterior: , Plantel anterior: 3
+[2025-07-10 23:46:13] NUEVO PLANTEL: Plantel Ecatepec (ID: 3)
+[2025-07-10 23:46:13] QUERY MOVER: UPDATE ejecutivo SET id_padre = NULL, id_pla = '3' WHERE id_eje = '4'
+[2025-07-10 23:46:13] VERIFICACIÓN - Nuevo padre: , Nuevo plantel: 3
+[2025-07-10 23:46:13] EJECUTIVO MOVIDO EXITOSAMENTE
+[2025-07-10 23:46:13] RESPUESTA ENVIADA: SUCCESS
+[2025-07-10 23:46:13] ==============================================
+[2025-07-10 23:46:13] REQUEST recibido: Array
+(
+    [action] => obtener_ejecutivos_por_plantel
+)
+
+[2025-07-10 23:46:13] Query ejecutivos por plantel: SELECT e.id_eje, e.nom_eje, e.tel_eje, e.eli_eje, e.id_padre, e.id_pla, e.ult_eje,
+					         p.nom_pla,
+					         GROUP_CONCAT(DISTINCT CONCAT(pa.id_pla, ':', pa.nom_pla) SEPARATOR '|') as planteles_asociados,
+					         COUNT(DISTINCT pe.id_pla) as total_planteles_asociados,
+					         CASE 
+					             WHEN e.ult_eje IS NULL THEN 'sin_sesion'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) <= 1 THEN 'verde'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) BETWEEN 2 AND 3 THEN 'amarillo'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) >= 4 THEN 'rojo'
+					             ELSE 'sin_sesion'
+					         END as semaforo_sesion,
+					         TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) as dias_desde_ultima_sesion
+					  FROM ejecutivo e 
+					  LEFT JOIN plantel p ON e.id_pla = p.id_pla 
+					  LEFT JOIN planteles_ejecutivo pe ON e.id_eje = pe.id_eje
+					  LEFT JOIN plantel pa ON pe.id_pla = pa.id_pla
+					  GROUP BY e.id_eje
+					  ORDER BY e.id_pla, e.eli_eje DESC, e.nom_eje ASC
+[2025-07-10 23:46:13] Ejecutivos por plantel encontrados: 14
+[2025-07-10 23:46:16] REQUEST recibido: Array
+(
+    [action] => mover_ejecutivo
+    [id_eje] => 4
+    [id_padre] => 11
+    [id_pla] => 3
+)
+
+[2025-07-10 23:46:16] ==============================================
+[2025-07-10 23:46:16] MOVER EJECUTIVO - REQUEST RECIBIDO
+[2025-07-10 23:46:16] POST data completo: Array
+(
+    [action] => mover_ejecutivo
+    [id_eje] => 4
+    [id_padre] => 11
+    [id_pla] => 3
+)
+
+[2025-07-10 23:46:16] Valores procesados:
+[2025-07-10 23:46:16] - ID Ejecutivo: 4
+[2025-07-10 23:46:16] - ID Padre: 11
+[2025-07-10 23:46:16] - ID Plantel: 3
+[2025-07-10 23:46:16] ANTES - Ejecutivo: Francisco Pineda, Padre anterior: , Plantel anterior: 3
+[2025-07-10 23:46:16] NUEVO PADRE: Carmen Morales Vega (ID: 11)
+[2025-07-10 23:46:16] NUEVO PLANTEL: Plantel Ecatepec (ID: 3)
+[2025-07-10 23:46:16] QUERY MOVER: UPDATE ejecutivo SET id_padre = '11', id_pla = '3' WHERE id_eje = '4'
+[2025-07-10 23:46:16] VERIFICACIÓN - Nuevo padre: 11, Nuevo plantel: 3
+[2025-07-10 23:46:16] EJECUTIVO MOVIDO EXITOSAMENTE
+[2025-07-10 23:46:16] RESPUESTA ENVIADA: SUCCESS
+[2025-07-10 23:46:16] ==============================================
+[2025-07-10 23:46:16] REQUEST recibido: Array
+(
+    [action] => obtener_ejecutivos_por_plantel
+)
+
+[2025-07-10 23:46:16] Query ejecutivos por plantel: SELECT e.id_eje, e.nom_eje, e.tel_eje, e.eli_eje, e.id_padre, e.id_pla, e.ult_eje,
+					         p.nom_pla,
+					         GROUP_CONCAT(DISTINCT CONCAT(pa.id_pla, ':', pa.nom_pla) SEPARATOR '|') as planteles_asociados,
+					         COUNT(DISTINCT pe.id_pla) as total_planteles_asociados,
+					         CASE 
+					             WHEN e.ult_eje IS NULL THEN 'sin_sesion'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) <= 1 THEN 'verde'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) BETWEEN 2 AND 3 THEN 'amarillo'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) >= 4 THEN 'rojo'
+					             ELSE 'sin_sesion'
+					         END as semaforo_sesion,
+					         TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) as dias_desde_ultima_sesion
+					  FROM ejecutivo e 
+					  LEFT JOIN plantel p ON e.id_pla = p.id_pla 
+					  LEFT JOIN planteles_ejecutivo pe ON e.id_eje = pe.id_eje
+					  LEFT JOIN plantel pa ON pe.id_pla = pa.id_pla
+					  GROUP BY e.id_eje
+					  ORDER BY e.id_pla, e.eli_eje DESC, e.nom_eje ASC
+[2025-07-10 23:46:16] Ejecutivos por plantel encontrados: 14
+[2025-07-10 23:46:19] REQUEST recibido: Array
+(
+    [action] => obtener_planteles
+)
+
+[2025-07-10 23:46:19] Query planteles: SELECT id_pla, nom_pla, fec_pla FROM plantel ORDER BY nom_pla ASC
+[2025-07-10 23:46:19] Planteles encontrados: 3
+[2025-07-10 23:46:19] REQUEST recibido: Array
+(
+    [action] => obtener_ejecutivos_por_plantel
+)
+
+[2025-07-10 23:46:19] Query ejecutivos por plantel: SELECT e.id_eje, e.nom_eje, e.tel_eje, e.eli_eje, e.id_padre, e.id_pla, e.ult_eje,
+					         p.nom_pla,
+					         GROUP_CONCAT(DISTINCT CONCAT(pa.id_pla, ':', pa.nom_pla) SEPARATOR '|') as planteles_asociados,
+					         COUNT(DISTINCT pe.id_pla) as total_planteles_asociados,
+					         CASE 
+					             WHEN e.ult_eje IS NULL THEN 'sin_sesion'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) <= 1 THEN 'verde'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) BETWEEN 2 AND 3 THEN 'amarillo'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) >= 4 THEN 'rojo'
+					             ELSE 'sin_sesion'
+					         END as semaforo_sesion,
+					         TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) as dias_desde_ultima_sesion
+					  FROM ejecutivo e 
+					  LEFT JOIN plantel p ON e.id_pla = p.id_pla 
+					  LEFT JOIN planteles_ejecutivo pe ON e.id_eje = pe.id_eje
+					  LEFT JOIN plantel pa ON pe.id_pla = pa.id_pla
+					  GROUP BY e.id_eje
+					  ORDER BY e.id_pla, e.eli_eje DESC, e.nom_eje ASC
+[2025-07-10 23:46:19] Ejecutivos por plantel encontrados: 14
+[2025-07-10 23:53:11] REQUEST recibido: Array
+(
+    [action] => obtener_planteles
+)
+
+[2025-07-10 23:53:11] Query planteles: SELECT id_pla, nom_pla, fec_pla FROM plantel ORDER BY nom_pla ASC
+[2025-07-10 23:53:11] Planteles encontrados: 3
+[2025-07-10 23:53:11] REQUEST recibido: Array
+(
+    [action] => obtener_ejecutivos_por_plantel
+)
+
+[2025-07-10 23:53:11] Query ejecutivos por plantel: SELECT e.id_eje, e.nom_eje, e.tel_eje, e.eli_eje, e.id_padre, e.id_pla, e.ult_eje,
+					         p.nom_pla,
+					         GROUP_CONCAT(DISTINCT CONCAT(pa.id_pla, ':', pa.nom_pla) SEPARATOR '|') as planteles_asociados,
+					         COUNT(DISTINCT pe.id_pla) as total_planteles_asociados,
+					         CASE 
+					             WHEN e.ult_eje IS NULL THEN 'sin_sesion'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) <= 1 THEN 'verde'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) BETWEEN 2 AND 3 THEN 'amarillo'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) >= 4 THEN 'rojo'
+					             ELSE 'sin_sesion'
+					         END as semaforo_sesion,
+					         TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) as dias_desde_ultima_sesion
+					  FROM ejecutivo e 
+					  LEFT JOIN plantel p ON e.id_pla = p.id_pla 
+					  LEFT JOIN planteles_ejecutivo pe ON e.id_eje = pe.id_eje
+					  LEFT JOIN plantel pa ON pe.id_pla = pa.id_pla
+					  GROUP BY e.id_eje
+					  ORDER BY e.id_pla, e.eli_eje DESC, e.nom_eje ASC
+[2025-07-10 23:53:11] Ejecutivos por plantel encontrados: 14
+[2025-07-10 23:53:20] REQUEST recibido: Array
+(
+    [action] => obtener_planteles
+)
+
+[2025-07-10 23:53:20] Query planteles: SELECT id_pla, nom_pla, fec_pla FROM plantel ORDER BY nom_pla ASC
+[2025-07-10 23:53:20] Planteles encontrados: 3
+[2025-07-10 23:53:20] REQUEST recibido: Array
+(
+    [action] => obtener_ejecutivos_por_plantel
+)
+
+[2025-07-10 23:53:20] Query ejecutivos por plantel: SELECT e.id_eje, e.nom_eje, e.tel_eje, e.eli_eje, e.id_padre, e.id_pla, e.ult_eje,
+					         p.nom_pla,
+					         GROUP_CONCAT(DISTINCT CONCAT(pa.id_pla, ':', pa.nom_pla) SEPARATOR '|') as planteles_asociados,
+					         COUNT(DISTINCT pe.id_pla) as total_planteles_asociados,
+					         CASE 
+					             WHEN e.ult_eje IS NULL THEN 'sin_sesion'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) <= 1 THEN 'verde'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) BETWEEN 2 AND 3 THEN 'amarillo'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) >= 4 THEN 'rojo'
+					             ELSE 'sin_sesion'
+					         END as semaforo_sesion,
+					         TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) as dias_desde_ultima_sesion
+					  FROM ejecutivo e 
+					  LEFT JOIN plantel p ON e.id_pla = p.id_pla 
+					  LEFT JOIN planteles_ejecutivo pe ON e.id_eje = pe.id_eje
+					  LEFT JOIN plantel pa ON pe.id_pla = pa.id_pla
+					  GROUP BY e.id_eje
+					  ORDER BY e.id_pla, e.eli_eje DESC, e.nom_eje ASC
+[2025-07-10 23:53:20] Ejecutivos por plantel encontrados: 14
+[2025-07-10 23:54:20] REQUEST recibido: Array
+(
+    [action] => obtener_planteles
+)
+
+[2025-07-10 23:54:20] Query planteles: SELECT id_pla, nom_pla, fec_pla FROM plantel ORDER BY nom_pla ASC
+[2025-07-10 23:54:20] Planteles encontrados: 3
+[2025-07-10 23:54:20] REQUEST recibido: Array
+(
+    [action] => obtener_ejecutivos_por_plantel
+)
+
+[2025-07-10 23:54:20] Query ejecutivos por plantel: SELECT e.id_eje, e.nom_eje, e.tel_eje, e.eli_eje, e.id_padre, e.id_pla, e.ult_eje,
+					         p.nom_pla,
+					         GROUP_CONCAT(DISTINCT CONCAT(pa.id_pla, ':', pa.nom_pla) SEPARATOR '|') as planteles_asociados,
+					         COUNT(DISTINCT pe.id_pla) as total_planteles_asociados,
+					         CASE 
+					             WHEN e.ult_eje IS NULL THEN 'sin_sesion'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) <= 1 THEN 'verde'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) BETWEEN 2 AND 3 THEN 'amarillo'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) >= 4 THEN 'rojo'
+					             ELSE 'sin_sesion'
+					         END as semaforo_sesion,
+					         TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) as dias_desde_ultima_sesion
+					  FROM ejecutivo e 
+					  LEFT JOIN plantel p ON e.id_pla = p.id_pla 
+					  LEFT JOIN planteles_ejecutivo pe ON e.id_eje = pe.id_eje
+					  LEFT JOIN plantel pa ON pe.id_pla = pa.id_pla
+					  GROUP BY e.id_eje
+					  ORDER BY e.id_pla, e.eli_eje DESC, e.nom_eje ASC
+[2025-07-10 23:54:20] Ejecutivos por plantel encontrados: 14
+[2025-07-11 00:03:15] REQUEST recibido: Array
+(
+    [action] => obtener_planteles
+)
+
+[2025-07-11 00:03:15] Query planteles: SELECT id_pla, nom_pla, fec_pla FROM plantel ORDER BY nom_pla ASC
+[2025-07-11 00:03:15] Planteles encontrados: 3
+[2025-07-11 00:03:15] REQUEST recibido: Array
+(
+    [action] => obtener_ejecutivos_por_plantel
+)
+
+[2025-07-11 00:03:16] Query ejecutivos por plantel: SELECT e.id_eje, e.nom_eje, e.tel_eje, e.eli_eje, e.id_padre, e.id_pla, e.ult_eje,
+					         p.nom_pla,
+					         GROUP_CONCAT(DISTINCT CONCAT(pa.id_pla, ':', pa.nom_pla) SEPARATOR '|') as planteles_asociados,
+					         COUNT(DISTINCT pe.id_pla) as total_planteles_asociados,
+					         CASE 
+					             WHEN e.ult_eje IS NULL THEN 'sin_sesion'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) <= 1 THEN 'verde'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) BETWEEN 2 AND 3 THEN 'amarillo'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) >= 4 THEN 'rojo'
+					             ELSE 'sin_sesion'
+					         END as semaforo_sesion,
+					         TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) as dias_desde_ultima_sesion
+					  FROM ejecutivo e 
+					  LEFT JOIN plantel p ON e.id_pla = p.id_pla 
+					  LEFT JOIN planteles_ejecutivo pe ON e.id_eje = pe.id_eje
+					  LEFT JOIN plantel pa ON pe.id_pla = pa.id_pla
+					  GROUP BY e.id_eje
+					  ORDER BY e.id_pla, e.eli_eje DESC, e.nom_eje ASC
+[2025-07-11 00:03:16] Ejecutivos por plantel encontrados: 14
+[2025-07-11 00:04:42] REQUEST recibido: Array
+(
+    [action] => obtener_planteles
+)
+
+[2025-07-11 00:04:42] Query planteles: SELECT id_pla, nom_pla, fec_pla FROM plantel ORDER BY nom_pla ASC
+[2025-07-11 00:04:42] Planteles encontrados: 3
+[2025-07-11 00:04:42] REQUEST recibido: Array
+(
+    [action] => obtener_ejecutivos_por_plantel
+)
+
+[2025-07-11 00:04:42] Query ejecutivos por plantel: SELECT e.id_eje, e.nom_eje, e.tel_eje, e.eli_eje, e.id_padre, e.id_pla, e.ult_eje,
+					         p.nom_pla,
+					         GROUP_CONCAT(DISTINCT CONCAT(pa.id_pla, ':', pa.nom_pla) SEPARATOR '|') as planteles_asociados,
+					         COUNT(DISTINCT pe.id_pla) as total_planteles_asociados,
+					         CASE 
+					             WHEN e.ult_eje IS NULL THEN 'sin_sesion'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) <= 1 THEN 'verde'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) BETWEEN 2 AND 3 THEN 'amarillo'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) >= 4 THEN 'rojo'
+					             ELSE 'sin_sesion'
+					         END as semaforo_sesion,
+					         TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) as dias_desde_ultima_sesion
+					  FROM ejecutivo e 
+					  LEFT JOIN plantel p ON e.id_pla = p.id_pla 
+					  LEFT JOIN planteles_ejecutivo pe ON e.id_eje = pe.id_eje
+					  LEFT JOIN plantel pa ON pe.id_pla = pa.id_pla
+					  GROUP BY e.id_eje
+					  ORDER BY e.id_pla, e.eli_eje DESC, e.nom_eje ASC
+[2025-07-11 00:04:42] Ejecutivos por plantel encontrados: 14
+[2025-07-11 00:05:04] REQUEST recibido: Array
+(
+    [nom_eje] => Nuevo ejecutivo
+    [tel_eje] => 000000
+    [id_pla] => 3
+    [action] => crear_ejecutivo
+    [eli_eje] => 1
+)
+
+[2025-07-11 00:05:24] REQUEST recibido: Array
+(
+    [action] => obtener_planteles
+)
+
+[2025-07-11 00:05:24] Query planteles: SELECT id_pla, nom_pla, fec_pla FROM plantel ORDER BY nom_pla ASC
+[2025-07-11 00:05:24] Planteles encontrados: 3
+[2025-07-11 00:05:24] REQUEST recibido: Array
+(
+    [action] => obtener_ejecutivos_por_plantel
+)
+
+[2025-07-11 00:05:24] Query ejecutivos por plantel: SELECT e.id_eje, e.nom_eje, e.tel_eje, e.eli_eje, e.id_padre, e.id_pla, e.ult_eje,
+					         p.nom_pla,
+					         GROUP_CONCAT(DISTINCT CONCAT(pa.id_pla, ':', pa.nom_pla) SEPARATOR '|') as planteles_asociados,
+					         COUNT(DISTINCT pe.id_pla) as total_planteles_asociados,
+					         CASE 
+					             WHEN e.ult_eje IS NULL THEN 'sin_sesion'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) <= 1 THEN 'verde'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) BETWEEN 2 AND 3 THEN 'amarillo'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) >= 4 THEN 'rojo'
+					             ELSE 'sin_sesion'
+					         END as semaforo_sesion,
+					         TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) as dias_desde_ultima_sesion
+					  FROM ejecutivo e 
+					  LEFT JOIN plantel p ON e.id_pla = p.id_pla 
+					  LEFT JOIN planteles_ejecutivo pe ON e.id_eje = pe.id_eje
+					  LEFT JOIN plantel pa ON pe.id_pla = pa.id_pla
+					  GROUP BY e.id_eje
+					  ORDER BY e.id_pla, e.eli_eje DESC, e.nom_eje ASC
+[2025-07-11 00:05:24] Ejecutivos por plantel encontrados: 15
+[2025-07-11 00:05:42] REQUEST recibido: Array
+(
+    [action] => mover_ejecutivo
+    [id_eje] => 18
+    [id_padre] => 
+    [id_pla] => 6
+)
+
+[2025-07-11 00:05:42] ==============================================
+[2025-07-11 00:05:42] MOVER EJECUTIVO - REQUEST RECIBIDO
+[2025-07-11 00:05:42] POST data completo: Array
+(
+    [action] => mover_ejecutivo
+    [id_eje] => 18
+    [id_padre] => 
+    [id_pla] => 6
+)
+
+[2025-07-11 00:05:42] Valores procesados:
+[2025-07-11 00:05:42] - ID Ejecutivo: 18
+[2025-07-11 00:05:42] - ID Padre: NULL
+[2025-07-11 00:05:42] - ID Plantel: 6
+[2025-07-11 00:05:42] ANTES - Ejecutivo: Nuevo ejecutivo, Padre anterior: , Plantel anterior: 3
+[2025-07-11 00:05:42] NUEVO PLANTEL: Plantel Cuautitlán (ID: 6)
+[2025-07-11 00:05:42] QUERY MOVER: UPDATE ejecutivo SET id_padre = NULL, id_pla = '6' WHERE id_eje = '18'
+[2025-07-11 00:05:42] VERIFICACIÓN - Nuevo padre: , Nuevo plantel: 6
+[2025-07-11 00:05:42] EJECUTIVO MOVIDO EXITOSAMENTE
+[2025-07-11 00:05:42] RESPUESTA ENVIADA: SUCCESS
+[2025-07-11 00:05:42] ==============================================
+[2025-07-11 00:05:42] REQUEST recibido: Array
+(
+    [action] => obtener_ejecutivos_por_plantel
+)
+
+[2025-07-11 00:05:42] Query ejecutivos por plantel: SELECT e.id_eje, e.nom_eje, e.tel_eje, e.eli_eje, e.id_padre, e.id_pla, e.ult_eje,
+					         p.nom_pla,
+					         GROUP_CONCAT(DISTINCT CONCAT(pa.id_pla, ':', pa.nom_pla) SEPARATOR '|') as planteles_asociados,
+					         COUNT(DISTINCT pe.id_pla) as total_planteles_asociados,
+					         CASE 
+					             WHEN e.ult_eje IS NULL THEN 'sin_sesion'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) <= 1 THEN 'verde'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) BETWEEN 2 AND 3 THEN 'amarillo'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) >= 4 THEN 'rojo'
+					             ELSE 'sin_sesion'
+					         END as semaforo_sesion,
+					         TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) as dias_desde_ultima_sesion
+					  FROM ejecutivo e 
+					  LEFT JOIN plantel p ON e.id_pla = p.id_pla 
+					  LEFT JOIN planteles_ejecutivo pe ON e.id_eje = pe.id_eje
+					  LEFT JOIN plantel pa ON pe.id_pla = pa.id_pla
+					  GROUP BY e.id_eje
+					  ORDER BY e.id_pla, e.eli_eje DESC, e.nom_eje ASC
+[2025-07-11 00:05:42] Ejecutivos por plantel encontrados: 15
+[2025-07-11 00:06:37] REQUEST recibido: Array
+(
+    [id_eje] => 18
+    [nom_eje] => FRANCISCO PINEDA HERNANDEZ
+    [tel_eje] => 111-111
+    [id_pla] => 3
+    [action] => actualizar_ejecutivo
+    [eli_eje] => 1
+)
+
+[2025-07-11 00:06:46] REQUEST recibido: Array
+(
+    [action] => obtener_planteles
+)
+
+[2025-07-11 00:06:46] Query planteles: SELECT id_pla, nom_pla, fec_pla FROM plantel ORDER BY nom_pla ASC
+[2025-07-11 00:06:46] Planteles encontrados: 3
+[2025-07-11 00:06:46] REQUEST recibido: Array
+(
+    [action] => obtener_ejecutivos_por_plantel
+)
+
+[2025-07-11 00:06:46] Query ejecutivos por plantel: SELECT e.id_eje, e.nom_eje, e.tel_eje, e.eli_eje, e.id_padre, e.id_pla, e.ult_eje,
+					         p.nom_pla,
+					         GROUP_CONCAT(DISTINCT CONCAT(pa.id_pla, ':', pa.nom_pla) SEPARATOR '|') as planteles_asociados,
+					         COUNT(DISTINCT pe.id_pla) as total_planteles_asociados,
+					         CASE 
+					             WHEN e.ult_eje IS NULL THEN 'sin_sesion'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) <= 1 THEN 'verde'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) BETWEEN 2 AND 3 THEN 'amarillo'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) >= 4 THEN 'rojo'
+					             ELSE 'sin_sesion'
+					         END as semaforo_sesion,
+					         TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) as dias_desde_ultima_sesion
+					  FROM ejecutivo e 
+					  LEFT JOIN plantel p ON e.id_pla = p.id_pla 
+					  LEFT JOIN planteles_ejecutivo pe ON e.id_eje = pe.id_eje
+					  LEFT JOIN plantel pa ON pe.id_pla = pa.id_pla
+					  GROUP BY e.id_eje
+					  ORDER BY e.id_pla, e.eli_eje DESC, e.nom_eje ASC
+[2025-07-11 00:06:46] Ejecutivos por plantel encontrados: 15
+[2025-07-11 00:06:51] REQUEST recibido: Array
+(
+    [action] => mover_ejecutivo
+    [id_eje] => 18
+    [id_padre] => 
+    [id_pla] => 2
+)
+
+[2025-07-11 00:06:51] ==============================================
+[2025-07-11 00:06:51] MOVER EJECUTIVO - REQUEST RECIBIDO
+[2025-07-11 00:06:51] POST data completo: Array
+(
+    [action] => mover_ejecutivo
+    [id_eje] => 18
+    [id_padre] => 
+    [id_pla] => 2
+)
+
+[2025-07-11 00:06:51] Valores procesados:
+[2025-07-11 00:06:51] - ID Ejecutivo: 18
+[2025-07-11 00:06:51] - ID Padre: NULL
+[2025-07-11 00:06:51] - ID Plantel: 2
+[2025-07-11 00:06:51] ANTES - Ejecutivo: FRANCISCO PINEDA HERNANDEZ, Padre anterior: , Plantel anterior: 3
+[2025-07-11 00:06:51] NUEVO PLANTEL: Plantel Naucalpan (ID: 2)
+[2025-07-11 00:06:51] QUERY MOVER: UPDATE ejecutivo SET id_padre = NULL, id_pla = '2' WHERE id_eje = '18'
+[2025-07-11 00:06:51] VERIFICACIÓN - Nuevo padre: , Nuevo plantel: 2
+[2025-07-11 00:06:51] EJECUTIVO MOVIDO EXITOSAMENTE
+[2025-07-11 00:06:51] RESPUESTA ENVIADA: SUCCESS
+[2025-07-11 00:06:51] ==============================================
+[2025-07-11 00:06:51] REQUEST recibido: Array
+(
+    [action] => obtener_ejecutivos_por_plantel
+)
+
+[2025-07-11 00:06:51] Query ejecutivos por plantel: SELECT e.id_eje, e.nom_eje, e.tel_eje, e.eli_eje, e.id_padre, e.id_pla, e.ult_eje,
+					         p.nom_pla,
+					         GROUP_CONCAT(DISTINCT CONCAT(pa.id_pla, ':', pa.nom_pla) SEPARATOR '|') as planteles_asociados,
+					         COUNT(DISTINCT pe.id_pla) as total_planteles_asociados,
+					         CASE 
+					             WHEN e.ult_eje IS NULL THEN 'sin_sesion'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) <= 1 THEN 'verde'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) BETWEEN 2 AND 3 THEN 'amarillo'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) >= 4 THEN 'rojo'
+					             ELSE 'sin_sesion'
+					         END as semaforo_sesion,
+					         TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) as dias_desde_ultima_sesion
+					  FROM ejecutivo e 
+					  LEFT JOIN plantel p ON e.id_pla = p.id_pla 
+					  LEFT JOIN planteles_ejecutivo pe ON e.id_eje = pe.id_eje
+					  LEFT JOIN plantel pa ON pe.id_pla = pa.id_pla
+					  GROUP BY e.id_eje
+					  ORDER BY e.id_pla, e.eli_eje DESC, e.nom_eje ASC
+[2025-07-11 00:06:51] Ejecutivos por plantel encontrados: 15
+[2025-07-11 00:08:02] REQUEST recibido: Array
+(
+    [nom_eje] => EJECUTIVO PINEDA
+    [tel_eje] => 0000
+    [id_pla] => 6
+    [action] => crear_ejecutivo
+    [eli_eje] => 1
+)
+
+[2025-07-11 00:08:05] REQUEST recibido: Array
+(
+    [action] => obtener_planteles
+)
+
+[2025-07-11 00:08:05] Query planteles: SELECT id_pla, nom_pla, fec_pla FROM plantel ORDER BY nom_pla ASC
+[2025-07-11 00:08:05] Planteles encontrados: 3
+[2025-07-11 00:08:05] REQUEST recibido: Array
+(
+    [action] => obtener_ejecutivos_por_plantel
+)
+
+[2025-07-11 00:08:05] Query ejecutivos por plantel: SELECT e.id_eje, e.nom_eje, e.tel_eje, e.eli_eje, e.id_padre, e.id_pla, e.ult_eje,
+					         p.nom_pla,
+					         GROUP_CONCAT(DISTINCT CONCAT(pa.id_pla, ':', pa.nom_pla) SEPARATOR '|') as planteles_asociados,
+					         COUNT(DISTINCT pe.id_pla) as total_planteles_asociados,
+					         CASE 
+					             WHEN e.ult_eje IS NULL THEN 'sin_sesion'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) <= 1 THEN 'verde'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) BETWEEN 2 AND 3 THEN 'amarillo'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) >= 4 THEN 'rojo'
+					             ELSE 'sin_sesion'
+					         END as semaforo_sesion,
+					         TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) as dias_desde_ultima_sesion
+					  FROM ejecutivo e 
+					  LEFT JOIN plantel p ON e.id_pla = p.id_pla 
+					  LEFT JOIN planteles_ejecutivo pe ON e.id_eje = pe.id_eje
+					  LEFT JOIN plantel pa ON pe.id_pla = pa.id_pla
+					  GROUP BY e.id_eje
+					  ORDER BY e.id_pla, e.eli_eje DESC, e.nom_eje ASC
+[2025-07-11 00:08:05] Ejecutivos por plantel encontrados: 16
+[2025-07-11 00:08:40] REQUEST recibido: Array
+(
+    [id_eje] => 19
+    [nom_eje] => EJECUTIVO FRANCISCO PINEDA HERNANDEZ
+    [tel_eje] => 111-111
+    [id_pla] => 6
+    [action] => actualizar_ejecutivo
+    [eli_eje] => 1
+)
+
+[2025-07-11 00:09:09] REQUEST recibido: Array
+(
+    [id_eje] => 19
+    [nom_eje] => EJECUTIVO FRANCISCO PINEDA HERNANDEZ
+    [tel_eje] => 0000-000
+    [id_pla] => 6
+    [action] => actualizar_ejecutivo
+    [eli_eje] => 1
+)
+
+[2025-07-11 00:09:10] REQUEST recibido: Array
+(
+    [id_eje] => 19
+    [nom_eje] => EJECUTIVO FRANCISCO PINEDA HERNANDEZ
+    [tel_eje] => 0000-000
+    [id_pla] => 6
+    [action] => actualizar_ejecutivo
+    [eli_eje] => 1
+)
+
+[2025-07-11 00:09:24] REQUEST recibido: Array
+(
+    [action] => obtener_planteles
+)
+
+[2025-07-11 00:09:24] Query planteles: SELECT id_pla, nom_pla, fec_pla FROM plantel ORDER BY nom_pla ASC
+[2025-07-11 00:09:24] Planteles encontrados: 3
+[2025-07-11 00:09:24] REQUEST recibido: Array
+(
+    [action] => obtener_ejecutivos_por_plantel
+)
+
+[2025-07-11 00:09:24] Query ejecutivos por plantel: SELECT e.id_eje, e.nom_eje, e.tel_eje, e.eli_eje, e.id_padre, e.id_pla, e.ult_eje,
+					         p.nom_pla,
+					         GROUP_CONCAT(DISTINCT CONCAT(pa.id_pla, ':', pa.nom_pla) SEPARATOR '|') as planteles_asociados,
+					         COUNT(DISTINCT pe.id_pla) as total_planteles_asociados,
+					         CASE 
+					             WHEN e.ult_eje IS NULL THEN 'sin_sesion'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) <= 1 THEN 'verde'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) BETWEEN 2 AND 3 THEN 'amarillo'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) >= 4 THEN 'rojo'
+					             ELSE 'sin_sesion'
+					         END as semaforo_sesion,
+					         TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) as dias_desde_ultima_sesion
+					  FROM ejecutivo e 
+					  LEFT JOIN plantel p ON e.id_pla = p.id_pla 
+					  LEFT JOIN planteles_ejecutivo pe ON e.id_eje = pe.id_eje
+					  LEFT JOIN plantel pa ON pe.id_pla = pa.id_pla
+					  GROUP BY e.id_eje
+					  ORDER BY e.id_pla, e.eli_eje DESC, e.nom_eje ASC
+[2025-07-11 00:09:24] Ejecutivos por plantel encontrados: 16
+[2025-07-11 00:09:38] REQUEST recibido: Array
+(
+    [action] => mover_ejecutivo
+    [id_eje] => 19
+    [id_padre] => 
+    [id_pla] => 3
+)
+
+[2025-07-11 00:09:38] ==============================================
+[2025-07-11 00:09:38] MOVER EJECUTIVO - REQUEST RECIBIDO
+[2025-07-11 00:09:38] POST data completo: Array
+(
+    [action] => mover_ejecutivo
+    [id_eje] => 19
+    [id_padre] => 
+    [id_pla] => 3
+)
+
+[2025-07-11 00:09:38] Valores procesados:
+[2025-07-11 00:09:38] - ID Ejecutivo: 19
+[2025-07-11 00:09:38] - ID Padre: NULL
+[2025-07-11 00:09:38] - ID Plantel: 3
+[2025-07-11 00:09:38] ANTES - Ejecutivo: EJECUTIVO FRANCISCO PINEDA HERNANDEZ, Padre anterior: , Plantel anterior: 6
+[2025-07-11 00:09:38] NUEVO PLANTEL: Plantel Ecatepec (ID: 3)
+[2025-07-11 00:09:38] QUERY MOVER: UPDATE ejecutivo SET id_padre = NULL, id_pla = '3' WHERE id_eje = '19'
+[2025-07-11 00:09:38] VERIFICACIÓN - Nuevo padre: , Nuevo plantel: 3
+[2025-07-11 00:09:38] EJECUTIVO MOVIDO EXITOSAMENTE
+[2025-07-11 00:09:38] RESPUESTA ENVIADA: SUCCESS
+[2025-07-11 00:09:38] ==============================================
+[2025-07-11 00:09:38] REQUEST recibido: Array
+(
+    [action] => obtener_ejecutivos_por_plantel
+)
+
+[2025-07-11 00:09:38] Query ejecutivos por plantel: SELECT e.id_eje, e.nom_eje, e.tel_eje, e.eli_eje, e.id_padre, e.id_pla, e.ult_eje,
+					         p.nom_pla,
+					         GROUP_CONCAT(DISTINCT CONCAT(pa.id_pla, ':', pa.nom_pla) SEPARATOR '|') as planteles_asociados,
+					         COUNT(DISTINCT pe.id_pla) as total_planteles_asociados,
+					         CASE 
+					             WHEN e.ult_eje IS NULL THEN 'sin_sesion'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) <= 1 THEN 'verde'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) BETWEEN 2 AND 3 THEN 'amarillo'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) >= 4 THEN 'rojo'
+					             ELSE 'sin_sesion'
+					         END as semaforo_sesion,
+					         TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) as dias_desde_ultima_sesion
+					  FROM ejecutivo e 
+					  LEFT JOIN plantel p ON e.id_pla = p.id_pla 
+					  LEFT JOIN planteles_ejecutivo pe ON e.id_eje = pe.id_eje
+					  LEFT JOIN plantel pa ON pe.id_pla = pa.id_pla
+					  GROUP BY e.id_eje
+					  ORDER BY e.id_pla, e.eli_eje DESC, e.nom_eje ASC
+[2025-07-11 00:09:38] Ejecutivos por plantel encontrados: 16
+[2025-07-11 00:09:43] REQUEST recibido: Array
+(
+    [action] => mover_ejecutivo
+    [id_eje] => 19
+    [id_padre] => 12
+    [id_pla] => 3
+)
+
+[2025-07-11 00:09:43] ==============================================
+[2025-07-11 00:09:43] MOVER EJECUTIVO - REQUEST RECIBIDO
+[2025-07-11 00:09:43] POST data completo: Array
+(
+    [action] => mover_ejecutivo
+    [id_eje] => 19
+    [id_padre] => 12
+    [id_pla] => 3
+)
+
+[2025-07-11 00:09:43] Valores procesados:
+[2025-07-11 00:09:43] - ID Ejecutivo: 19
+[2025-07-11 00:09:43] - ID Padre: 12
+[2025-07-11 00:09:43] - ID Plantel: 3
+[2025-07-11 00:09:43] ANTES - Ejecutivo: EJECUTIVO FRANCISCO PINEDA HERNANDEZ, Padre anterior: , Plantel anterior: 3
+[2025-07-11 00:09:43] NUEVO PADRE: Diego Herrera Luna (ID: 12)
+[2025-07-11 00:09:43] NUEVO PLANTEL: Plantel Ecatepec (ID: 3)
+[2025-07-11 00:09:43] QUERY MOVER: UPDATE ejecutivo SET id_padre = '12', id_pla = '3' WHERE id_eje = '19'
+[2025-07-11 00:09:43] VERIFICACIÓN - Nuevo padre: 12, Nuevo plantel: 3
+[2025-07-11 00:09:43] EJECUTIVO MOVIDO EXITOSAMENTE
+[2025-07-11 00:09:43] RESPUESTA ENVIADA: SUCCESS
+[2025-07-11 00:09:43] ==============================================
+[2025-07-11 00:09:43] REQUEST recibido: Array
+(
+    [action] => obtener_ejecutivos_por_plantel
+)
+
+[2025-07-11 00:09:43] Query ejecutivos por plantel: SELECT e.id_eje, e.nom_eje, e.tel_eje, e.eli_eje, e.id_padre, e.id_pla, e.ult_eje,
+					         p.nom_pla,
+					         GROUP_CONCAT(DISTINCT CONCAT(pa.id_pla, ':', pa.nom_pla) SEPARATOR '|') as planteles_asociados,
+					         COUNT(DISTINCT pe.id_pla) as total_planteles_asociados,
+					         CASE 
+					             WHEN e.ult_eje IS NULL THEN 'sin_sesion'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) <= 1 THEN 'verde'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) BETWEEN 2 AND 3 THEN 'amarillo'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) >= 4 THEN 'rojo'
+					             ELSE 'sin_sesion'
+					         END as semaforo_sesion,
+					         TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) as dias_desde_ultima_sesion
+					  FROM ejecutivo e 
+					  LEFT JOIN plantel p ON e.id_pla = p.id_pla 
+					  LEFT JOIN planteles_ejecutivo pe ON e.id_eje = pe.id_eje
+					  LEFT JOIN plantel pa ON pe.id_pla = pa.id_pla
+					  GROUP BY e.id_eje
+					  ORDER BY e.id_pla, e.eli_eje DESC, e.nom_eje ASC
+[2025-07-11 00:09:43] Ejecutivos por plantel encontrados: 16
+[2025-07-11 00:10:23] REQUEST recibido: Array
+(
+    [action] => mover_ejecutivo
+    [id_eje] => 6
+    [id_padre] => 
+    [id_pla] => 6
+)
+
+[2025-07-11 00:10:23] ==============================================
+[2025-07-11 00:10:23] MOVER EJECUTIVO - REQUEST RECIBIDO
+[2025-07-11 00:10:23] POST data completo: Array
+(
+    [action] => mover_ejecutivo
+    [id_eje] => 6
+    [id_padre] => 
+    [id_pla] => 6
+)
+
+[2025-07-11 00:10:23] Valores procesados:
+[2025-07-11 00:10:23] - ID Ejecutivo: 6
+[2025-07-11 00:10:23] - ID Padre: NULL
+[2025-07-11 00:10:23] - ID Plantel: 6
+[2025-07-11 00:10:23] ANTES - Ejecutivo: Fatima Nava, Padre anterior: , Plantel anterior: 2
+[2025-07-11 00:10:23] NUEVO PLANTEL: Plantel Cuautitlán (ID: 6)
+[2025-07-11 00:10:23] QUERY MOVER: UPDATE ejecutivo SET id_padre = NULL, id_pla = '6' WHERE id_eje = '6'
+[2025-07-11 00:10:23] VERIFICACIÓN - Nuevo padre: , Nuevo plantel: 6
+[2025-07-11 00:10:23] EJECUTIVO MOVIDO EXITOSAMENTE
+[2025-07-11 00:10:23] RESPUESTA ENVIADA: SUCCESS
+[2025-07-11 00:10:23] ==============================================
+[2025-07-11 00:10:23] REQUEST recibido: Array
+(
+    [action] => obtener_ejecutivos_por_plantel
+)
+
+[2025-07-11 00:10:23] Query ejecutivos por plantel: SELECT e.id_eje, e.nom_eje, e.tel_eje, e.eli_eje, e.id_padre, e.id_pla, e.ult_eje,
+					         p.nom_pla,
+					         GROUP_CONCAT(DISTINCT CONCAT(pa.id_pla, ':', pa.nom_pla) SEPARATOR '|') as planteles_asociados,
+					         COUNT(DISTINCT pe.id_pla) as total_planteles_asociados,
+					         CASE 
+					             WHEN e.ult_eje IS NULL THEN 'sin_sesion'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) <= 1 THEN 'verde'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) BETWEEN 2 AND 3 THEN 'amarillo'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) >= 4 THEN 'rojo'
+					             ELSE 'sin_sesion'
+					         END as semaforo_sesion,
+					         TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) as dias_desde_ultima_sesion
+					  FROM ejecutivo e 
+					  LEFT JOIN plantel p ON e.id_pla = p.id_pla 
+					  LEFT JOIN planteles_ejecutivo pe ON e.id_eje = pe.id_eje
+					  LEFT JOIN plantel pa ON pe.id_pla = pa.id_pla
+					  GROUP BY e.id_eje
+					  ORDER BY e.id_pla, e.eli_eje DESC, e.nom_eje ASC
+[2025-07-11 00:10:24] Ejecutivos por plantel encontrados: 16
+[2025-07-11 00:10:48] REQUEST recibido: Array
+(
+    [action] => obtener_planteles
+)
+
+[2025-07-11 00:10:48] Query planteles: SELECT id_pla, nom_pla, fec_pla FROM plantel ORDER BY nom_pla ASC
+[2025-07-11 00:10:48] Planteles encontrados: 3
+[2025-07-11 00:10:48] REQUEST recibido: Array
+(
+    [action] => obtener_ejecutivos_por_plantel
+)
+
+[2025-07-11 00:10:48] Query ejecutivos por plantel: SELECT e.id_eje, e.nom_eje, e.tel_eje, e.eli_eje, e.id_padre, e.id_pla, e.ult_eje,
+					         p.nom_pla,
+					         GROUP_CONCAT(DISTINCT CONCAT(pa.id_pla, ':', pa.nom_pla) SEPARATOR '|') as planteles_asociados,
+					         COUNT(DISTINCT pe.id_pla) as total_planteles_asociados,
+					         CASE 
+					             WHEN e.ult_eje IS NULL THEN 'sin_sesion'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) <= 1 THEN 'verde'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) BETWEEN 2 AND 3 THEN 'amarillo'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) >= 4 THEN 'rojo'
+					             ELSE 'sin_sesion'
+					         END as semaforo_sesion,
+					         TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) as dias_desde_ultima_sesion
+					  FROM ejecutivo e 
+					  LEFT JOIN plantel p ON e.id_pla = p.id_pla 
+					  LEFT JOIN planteles_ejecutivo pe ON e.id_eje = pe.id_eje
+					  LEFT JOIN plantel pa ON pe.id_pla = pa.id_pla
+					  GROUP BY e.id_eje
+					  ORDER BY e.id_pla, e.eli_eje DESC, e.nom_eje ASC
+[2025-07-11 00:10:48] Ejecutivos por plantel encontrados: 16
+[2025-07-11 00:13:14] REQUEST recibido: Array
+(
+    [action] => obtener_planteles
+)
+
+[2025-07-11 00:13:14] Query planteles: SELECT id_pla, nom_pla, fec_pla FROM plantel ORDER BY nom_pla ASC
+[2025-07-11 00:13:14] Planteles encontrados: 3
+[2025-07-11 00:13:14] REQUEST recibido: Array
+(
+    [action] => obtener_ejecutivos_por_plantel
+)
+
+[2025-07-11 00:13:14] Query ejecutivos por plantel: SELECT e.id_eje, e.nom_eje, e.tel_eje, e.eli_eje, e.id_padre, e.id_pla, e.ult_eje,
+					         p.nom_pla,
+					         GROUP_CONCAT(DISTINCT CONCAT(pa.id_pla, ':', pa.nom_pla) SEPARATOR '|') as planteles_asociados,
+					         COUNT(DISTINCT pe.id_pla) as total_planteles_asociados,
+					         CASE 
+					             WHEN e.ult_eje IS NULL THEN 'sin_sesion'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) <= 1 THEN 'verde'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) BETWEEN 2 AND 3 THEN 'amarillo'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) >= 4 THEN 'rojo'
+					             ELSE 'sin_sesion'
+					         END as semaforo_sesion,
+					         TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) as dias_desde_ultima_sesion
+					  FROM ejecutivo e 
+					  LEFT JOIN plantel p ON e.id_pla = p.id_pla 
+					  LEFT JOIN planteles_ejecutivo pe ON e.id_eje = pe.id_eje
+					  LEFT JOIN plantel pa ON pe.id_pla = pa.id_pla
+					  GROUP BY e.id_eje
+					  ORDER BY e.id_pla, e.eli_eje DESC, e.nom_eje ASC
+[2025-07-11 00:13:14] Ejecutivos por plantel encontrados: 16
+[2025-07-11 00:13:37] REQUEST recibido: Array
+(
+    [action] => obtener_planteles
+)
+
+[2025-07-11 00:13:37] Query planteles: SELECT id_pla, nom_pla, fec_pla FROM plantel ORDER BY nom_pla ASC
+[2025-07-11 00:13:37] Planteles encontrados: 3
+[2025-07-11 00:13:37] REQUEST recibido: Array
+(
+    [action] => obtener_ejecutivos_por_plantel
+)
+
+[2025-07-11 00:13:37] Query ejecutivos por plantel: SELECT e.id_eje, e.nom_eje, e.tel_eje, e.eli_eje, e.id_padre, e.id_pla, e.ult_eje,
+					         p.nom_pla,
+					         GROUP_CONCAT(DISTINCT CONCAT(pa.id_pla, ':', pa.nom_pla) SEPARATOR '|') as planteles_asociados,
+					         COUNT(DISTINCT pe.id_pla) as total_planteles_asociados,
+					         CASE 
+					             WHEN e.ult_eje IS NULL THEN 'sin_sesion'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) <= 1 THEN 'verde'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) BETWEEN 2 AND 3 THEN 'amarillo'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) >= 4 THEN 'rojo'
+					             ELSE 'sin_sesion'
+					         END as semaforo_sesion,
+					         TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) as dias_desde_ultima_sesion
+					  FROM ejecutivo e 
+					  LEFT JOIN plantel p ON e.id_pla = p.id_pla 
+					  LEFT JOIN planteles_ejecutivo pe ON e.id_eje = pe.id_eje
+					  LEFT JOIN plantel pa ON pe.id_pla = pa.id_pla
+					  GROUP BY e.id_eje
+					  ORDER BY e.id_pla, e.eli_eje DESC, e.nom_eje ASC
+[2025-07-11 00:13:37] Ejecutivos por plantel encontrados: 16
+[2025-07-11 00:14:10] REQUEST recibido: Array
+(
+    [action] => obtener_planteles
+)
+
+[2025-07-11 00:14:10] Query planteles: SELECT id_pla, nom_pla, fec_pla FROM plantel ORDER BY nom_pla ASC
+[2025-07-11 00:14:10] Planteles encontrados: 3
+[2025-07-11 00:14:10] REQUEST recibido: Array
+(
+    [action] => obtener_ejecutivos_por_plantel
+)
+
+[2025-07-11 00:14:10] Query ejecutivos por plantel: SELECT e.id_eje, e.nom_eje, e.tel_eje, e.eli_eje, e.id_padre, e.id_pla, e.ult_eje,
+					         p.nom_pla,
+					         GROUP_CONCAT(DISTINCT CONCAT(pa.id_pla, ':', pa.nom_pla) SEPARATOR '|') as planteles_asociados,
+					         COUNT(DISTINCT pe.id_pla) as total_planteles_asociados,
+					         CASE 
+					             WHEN e.ult_eje IS NULL THEN 'sin_sesion'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) <= 1 THEN 'verde'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) BETWEEN 2 AND 3 THEN 'amarillo'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) >= 4 THEN 'rojo'
+					             ELSE 'sin_sesion'
+					         END as semaforo_sesion,
+					         TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) as dias_desde_ultima_sesion
+					  FROM ejecutivo e 
+					  LEFT JOIN plantel p ON e.id_pla = p.id_pla 
+					  LEFT JOIN planteles_ejecutivo pe ON e.id_eje = pe.id_eje
+					  LEFT JOIN plantel pa ON pe.id_pla = pa.id_pla
+					  GROUP BY e.id_eje
+					  ORDER BY e.id_pla, e.eli_eje DESC, e.nom_eje ASC
+[2025-07-11 00:14:10] Ejecutivos por plantel encontrados: 16
+[2025-07-11 00:15:14] REQUEST recibido: Array
+(
+    [action] => obtener_planteles
+)
+
+[2025-07-11 00:15:14] Query planteles: SELECT id_pla, nom_pla, fec_pla FROM plantel ORDER BY nom_pla ASC
+[2025-07-11 00:15:14] Planteles encontrados: 3
+[2025-07-11 00:15:14] REQUEST recibido: Array
+(
+    [action] => obtener_ejecutivos_por_plantel
+)
+
+[2025-07-11 00:15:14] Query ejecutivos por plantel: SELECT e.id_eje, e.nom_eje, e.tel_eje, e.eli_eje, e.id_padre, e.id_pla, e.ult_eje,
+					         p.nom_pla,
+					         GROUP_CONCAT(DISTINCT CONCAT(pa.id_pla, ':', pa.nom_pla) SEPARATOR '|') as planteles_asociados,
+					         COUNT(DISTINCT pe.id_pla) as total_planteles_asociados,
+					         CASE 
+					             WHEN e.ult_eje IS NULL THEN 'sin_sesion'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) <= 1 THEN 'verde'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) BETWEEN 2 AND 3 THEN 'amarillo'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) >= 4 THEN 'rojo'
+					             ELSE 'sin_sesion'
+					         END as semaforo_sesion,
+					         TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) as dias_desde_ultima_sesion
+					  FROM ejecutivo e 
+					  LEFT JOIN plantel p ON e.id_pla = p.id_pla 
+					  LEFT JOIN planteles_ejecutivo pe ON e.id_eje = pe.id_eje
+					  LEFT JOIN plantel pa ON pe.id_pla = pa.id_pla
+					  GROUP BY e.id_eje
+					  ORDER BY e.id_pla, e.eli_eje DESC, e.nom_eje ASC
+[2025-07-11 00:15:14] Ejecutivos por plantel encontrados: 16
+[2025-07-11 00:15:25] REQUEST recibido: Array
+(
+    [action] => obtener_planteles
+)
+
+[2025-07-11 00:15:25] Query planteles: SELECT id_pla, nom_pla, fec_pla FROM plantel ORDER BY nom_pla ASC
+[2025-07-11 00:15:25] Planteles encontrados: 3
+[2025-07-11 00:15:25] REQUEST recibido: Array
+(
+    [action] => obtener_ejecutivos_por_plantel
+)
+
+[2025-07-11 00:15:25] Query ejecutivos por plantel: SELECT e.id_eje, e.nom_eje, e.tel_eje, e.eli_eje, e.id_padre, e.id_pla, e.ult_eje,
+					         p.nom_pla,
+					         GROUP_CONCAT(DISTINCT CONCAT(pa.id_pla, ':', pa.nom_pla) SEPARATOR '|') as planteles_asociados,
+					         COUNT(DISTINCT pe.id_pla) as total_planteles_asociados,
+					         CASE 
+					             WHEN e.ult_eje IS NULL THEN 'sin_sesion'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) <= 1 THEN 'verde'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) BETWEEN 2 AND 3 THEN 'amarillo'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) >= 4 THEN 'rojo'
+					             ELSE 'sin_sesion'
+					         END as semaforo_sesion,
+					         TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) as dias_desde_ultima_sesion
+					  FROM ejecutivo e 
+					  LEFT JOIN plantel p ON e.id_pla = p.id_pla 
+					  LEFT JOIN planteles_ejecutivo pe ON e.id_eje = pe.id_eje
+					  LEFT JOIN plantel pa ON pe.id_pla = pa.id_pla
+					  GROUP BY e.id_eje
+					  ORDER BY e.id_pla, e.eli_eje DESC, e.nom_eje ASC
+[2025-07-11 00:15:25] Ejecutivos por plantel encontrados: 16
+[2025-07-11 00:15:37] REQUEST recibido: Array
+(
+    [action] => obtener_planteles
+)
+
+[2025-07-11 00:15:37] Query planteles: SELECT id_pla, nom_pla, fec_pla FROM plantel ORDER BY nom_pla ASC
+[2025-07-11 00:15:37] Planteles encontrados: 3
+[2025-07-11 00:15:37] REQUEST recibido: Array
+(
+    [action] => obtener_ejecutivos_por_plantel
+)
+
+[2025-07-11 00:15:37] Query ejecutivos por plantel: SELECT e.id_eje, e.nom_eje, e.tel_eje, e.eli_eje, e.id_padre, e.id_pla, e.ult_eje,
+					         p.nom_pla,
+					         GROUP_CONCAT(DISTINCT CONCAT(pa.id_pla, ':', pa.nom_pla) SEPARATOR '|') as planteles_asociados,
+					         COUNT(DISTINCT pe.id_pla) as total_planteles_asociados,
+					         CASE 
+					             WHEN e.ult_eje IS NULL THEN 'sin_sesion'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) <= 1 THEN 'verde'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) BETWEEN 2 AND 3 THEN 'amarillo'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) >= 4 THEN 'rojo'
+					             ELSE 'sin_sesion'
+					         END as semaforo_sesion,
+					         TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) as dias_desde_ultima_sesion
+					  FROM ejecutivo e 
+					  LEFT JOIN plantel p ON e.id_pla = p.id_pla 
+					  LEFT JOIN planteles_ejecutivo pe ON e.id_eje = pe.id_eje
+					  LEFT JOIN plantel pa ON pe.id_pla = pa.id_pla
+					  GROUP BY e.id_eje
+					  ORDER BY e.id_pla, e.eli_eje DESC, e.nom_eje ASC
+[2025-07-11 00:15:37] Ejecutivos por plantel encontrados: 16
+[2025-07-11 00:15:40] REQUEST recibido: Array
+(
+    [action] => obtener_planteles
+)
+
+[2025-07-11 00:15:40] Query planteles: SELECT id_pla, nom_pla, fec_pla FROM plantel ORDER BY nom_pla ASC
+[2025-07-11 00:15:40] Planteles encontrados: 3
+[2025-07-11 00:15:40] REQUEST recibido: Array
+(
+    [action] => obtener_ejecutivos_por_plantel
+)
+
+[2025-07-11 00:15:40] Query ejecutivos por plantel: SELECT e.id_eje, e.nom_eje, e.tel_eje, e.eli_eje, e.id_padre, e.id_pla, e.ult_eje,
+					         p.nom_pla,
+					         GROUP_CONCAT(DISTINCT CONCAT(pa.id_pla, ':', pa.nom_pla) SEPARATOR '|') as planteles_asociados,
+					         COUNT(DISTINCT pe.id_pla) as total_planteles_asociados,
+					         CASE 
+					             WHEN e.ult_eje IS NULL THEN 'sin_sesion'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) <= 1 THEN 'verde'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) BETWEEN 2 AND 3 THEN 'amarillo'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) >= 4 THEN 'rojo'
+					             ELSE 'sin_sesion'
+					         END as semaforo_sesion,
+					         TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) as dias_desde_ultima_sesion
+					  FROM ejecutivo e 
+					  LEFT JOIN plantel p ON e.id_pla = p.id_pla 
+					  LEFT JOIN planteles_ejecutivo pe ON e.id_eje = pe.id_eje
+					  LEFT JOIN plantel pa ON pe.id_pla = pa.id_pla
+					  GROUP BY e.id_eje
+					  ORDER BY e.id_pla, e.eli_eje DESC, e.nom_eje ASC
+[2025-07-11 00:15:40] Ejecutivos por plantel encontrados: 16
+[2025-07-11 00:16:30] REQUEST recibido: Array
+(
+    [action] => mover_ejecutivo
+    [id_eje] => 6
+    [id_padre] => 
+    [id_pla] => 2
+)
+
+[2025-07-11 00:16:30] ==============================================
+[2025-07-11 00:16:30] MOVER EJECUTIVO - REQUEST RECIBIDO
+[2025-07-11 00:16:30] POST data completo: Array
+(
+    [action] => mover_ejecutivo
+    [id_eje] => 6
+    [id_padre] => 
+    [id_pla] => 2
+)
+
+[2025-07-11 00:16:30] Valores procesados:
+[2025-07-11 00:16:30] - ID Ejecutivo: 6
+[2025-07-11 00:16:30] - ID Padre: NULL
+[2025-07-11 00:16:30] - ID Plantel: 2
+[2025-07-11 00:16:30] ANTES - Ejecutivo: Fatima Nava, Padre anterior: , Plantel anterior: 6
+[2025-07-11 00:16:30] NUEVO PLANTEL: Plantel Naucalpan (ID: 2)
+[2025-07-11 00:16:30] QUERY MOVER: UPDATE ejecutivo SET id_padre = NULL, id_pla = '2' WHERE id_eje = '6'
+[2025-07-11 00:16:30] VERIFICACIÓN - Nuevo padre: , Nuevo plantel: 2
+[2025-07-11 00:16:30] EJECUTIVO MOVIDO EXITOSAMENTE
+[2025-07-11 00:16:30] RESPUESTA ENVIADA: SUCCESS
+[2025-07-11 00:16:30] ==============================================
+[2025-07-11 00:16:30] REQUEST recibido: Array
+(
+    [action] => obtener_ejecutivos_por_plantel
+)
+
+[2025-07-11 00:16:30] Query ejecutivos por plantel: SELECT e.id_eje, e.nom_eje, e.tel_eje, e.eli_eje, e.id_padre, e.id_pla, e.ult_eje,
+					         p.nom_pla,
+					         GROUP_CONCAT(DISTINCT CONCAT(pa.id_pla, ':', pa.nom_pla) SEPARATOR '|') as planteles_asociados,
+					         COUNT(DISTINCT pe.id_pla) as total_planteles_asociados,
+					         CASE 
+					             WHEN e.ult_eje IS NULL THEN 'sin_sesion'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) <= 1 THEN 'verde'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) BETWEEN 2 AND 3 THEN 'amarillo'
+					             WHEN TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) >= 4 THEN 'rojo'
+					             ELSE 'sin_sesion'
+					         END as semaforo_sesion,
+					         TIMESTAMPDIFF(DAY, e.ult_eje, NOW()) as dias_desde_ultima_sesion
+					  FROM ejecutivo e 
+					  LEFT JOIN plantel p ON e.id_pla = p.id_pla 
+					  LEFT JOIN planteles_ejecutivo pe ON e.id_eje = pe.id_eje
+					  LEFT JOIN plantel pa ON pe.id_pla = pa.id_pla
+					  GROUP BY e.id_eje
+					  ORDER BY e.id_pla, e.eli_eje DESC, e.nom_eje ASC
+[2025-07-11 00:16:30] Ejecutivos por plantel encontrados: 16
